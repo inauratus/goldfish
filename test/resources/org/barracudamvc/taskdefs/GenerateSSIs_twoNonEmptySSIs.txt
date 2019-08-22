@@ -1,0 +1,8 @@
+<!-- start firstNonEmptySSI.ssi -->
+I am in the first SSI
+<!-- end firstNonEmptySSI.ssi -->
+
+<!-- start secondNonEmptySSI.ssi -->
+Now in the second SSI
+I am a message!
+<!-- end secondNonEmptySSI.ssi -->

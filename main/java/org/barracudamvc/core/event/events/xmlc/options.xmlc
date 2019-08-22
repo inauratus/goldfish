@@ -1,0 +1,5 @@
+-dom xerces
+-for-deferred-parsing
+-html:encoding iso-8859-1
+-delete-class discardMe
+-validate true
