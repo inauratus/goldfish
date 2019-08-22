@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.barracudamvc.core.forms.PrefixFormMapperTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2019-07-18T19:49:31" hostname="CHUCKLOWERY-68" time="0.051">
+  <properties/>
+  <testcase name="testFloatValue" classname="org.barracudamvc.core.forms.PrefixFormMapperTest" time="0.001"/>
+  <testcase name="testBooleanValue" classname="org.barracudamvc.core.forms.PrefixFormMapperTest" time="0.0"/>
+  <testcase name="testIntegerValue" classname="org.barracudamvc.core.forms.PrefixFormMapperTest" time="0.001"/>
+  <testcase name="testBigDecimalValue" classname="org.barracudamvc.core.forms.PrefixFormMapperTest" time="0.009"/>
+  <testcase name="testDateValue" classname="org.barracudamvc.core.forms.PrefixFormMapperTest" time="0.002"/>
+  <testcase name="testTimeValue" classname="org.barracudamvc.core.forms.PrefixFormMapperTest" time="0.003"/>
+  <testcase name="testLongValue" classname="org.barracudamvc.core.forms.PrefixFormMapperTest" time="0.0"/>
+  <testcase name="testShortValue" classname="org.barracudamvc.core.forms.PrefixFormMapperTest" time="0.0"/>
+  <testcase name="testDoubleValue" classname="org.barracudamvc.core.forms.PrefixFormMapperTest" time="0.001"/>
+  <testcase name="testTimestampValue" classname="org.barracudamvc.core.forms.PrefixFormMapperTest" time="0.001"/>
+  <testcase name="testDateValue_date" classname="org.barracudamvc.core.forms.PrefixFormMapperTest" time="0.0"/>
+  <testcase name="testStringValue" classname="org.barracudamvc.core.forms.PrefixFormMapperTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

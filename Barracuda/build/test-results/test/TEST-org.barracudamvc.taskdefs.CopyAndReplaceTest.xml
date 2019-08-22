@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.barracudamvc.taskdefs.CopyAndReplaceTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2019-07-18T19:49:33" hostname="CHUCKLOWERY-68" time="0.016">
+  <properties/>
+  <testcase name="givenTargetFileWithSingleIncludeForNonEmptyTextSSI_expectIncludeReplacedBySSIContent" classname="org.barracudamvc.taskdefs.CopyAndReplaceTest" time="0.009"/>
+  <testcase name="givenTargetFileWithCyclicalInclude_expectErrorMessageByteArray" classname="org.barracudamvc.taskdefs.CopyAndReplaceTest" time="0.002"/>
+  <testcase name="givenTargetFileWithSingleIncludeForEmptySSI_expectIncludeReplacedByEmptyString" classname="org.barracudamvc.taskdefs.CopyAndReplaceTest" time="0.0"/>
+  <testcase name="givenTargetFileWithSingleIncludeForSingleSSIWithInclude_expectIncludeReplacedBySSIAndSSIContentsOfSecondInclude" classname="org.barracudamvc.taskdefs.CopyAndReplaceTest" time="0.001"/>
+  <testcase name="givenTargetFileWithSingleIncludeForTwoEmptySSIs_expectIncludeTagsReplacedByTwoSSIs" classname="org.barracudamvc.taskdefs.CopyAndReplaceTest" time="0.0"/>
+  <testcase name="givenTargetFileWithTwoIncludesForEmptySSI_expectEachIncludeReplacedByEmptySSI" classname="org.barracudamvc.taskdefs.CopyAndReplaceTest" time="0.0"/>
+  <testcase name="givenTargetFileWithSingleIncludeForNonEmptySSI_expectIncludeReplacedBySSI" classname="org.barracudamvc.taskdefs.CopyAndReplaceTest" time="0.001"/>
+  <testcase name="givenAFileWithText_expectByteArrayToContainFileContents" classname="org.barracudamvc.taskdefs.CopyAndReplaceTest" time="0.001"/>
+  <testcase name="givenTargetFileWithNoInclude_expectEmptyByteArray" classname="org.barracudamvc.taskdefs.CopyAndReplaceTest" time="0.0"/>
+  <system-out><![CDATA[D:\goldfish\Barracuda\build\resources\test\org\barracudamvc\taskdefs\CopyAndReplace_cyclicalIncludeSSI.txt
+   D:\goldfish\Barracuda\build\resources\test\org\barracudamvc\taskdefs\CopyAndReplace_firstCyclicalSSI.ssi
+      D:\goldfish\Barracuda\build\resources\test\org\barracudamvc\taskdefs\CopyAndReplace_secondCyclicalSSI.ssi
+]]></system-out>
+  <system-err><![CDATA[   D:\goldfish\Barracuda\build\resources\test\org\barracudamvc\taskdefs\CopyAndReplace_firstCyclicalSSI.ssi
+]]></system-err>
+</testsuite>

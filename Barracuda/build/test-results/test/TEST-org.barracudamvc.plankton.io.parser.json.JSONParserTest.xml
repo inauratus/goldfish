@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.barracudamvc.plankton.io.parser.json.JSONParserTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2019-07-18T19:49:33" hostname="CHUCKLOWERY-68" time="0.012">
+  <properties/>
+  <testcase name="givenEmptyArrayOfArrays_expectEmptyListOfList" classname="org.barracudamvc.plankton.io.parser.json.JSONParserTest" time="0.009"/>
+  <testcase name="givenArrayWithNull_expectAListContainingNull" classname="org.barracudamvc.plankton.io.parser.json.JSONParserTest" time="0.0"/>
+  <testcase name="givenDeepArray" classname="org.barracudamvc.plankton.io.parser.json.JSONParserTest" time="0.0"/>
+  <testcase name="givenEmptyArrayOfArraysSingleValue_expectEmptyListOfList" classname="org.barracudamvc.plankton.io.parser.json.JSONParserTest" time="0.001"/>
+  <testcase name="givenOpenCloseBrases_expectEmptyMap" classname="org.barracudamvc.plankton.io.parser.json.JSONParserTest" time="0.0"/>
+  <testcase name="givenArrayOfReserved_expectListOfReserved" classname="org.barracudamvc.plankton.io.parser.json.JSONParserTest" time="0.0"/>
+  <testcase name="givenArrayWithFalse_expectAListContainingFalse" classname="org.barracudamvc.plankton.io.parser.json.JSONParserTest" time="0.0"/>
+  <testcase name="givenArrayOfArrayOfNull_expectListOfListOfNull" classname="org.barracudamvc.plankton.io.parser.json.JSONParserTest" time="0.0"/>
+  <testcase name="givenArrayWithTrue_expectAListContainingTrue" classname="org.barracudamvc.plankton.io.parser.json.JSONParserTest" time="0.0"/>
+  <testcase name="givenAnArrayOfStrings_expectAListOfStrings" classname="org.barracudamvc.plankton.io.parser.json.JSONParserTest" time="0.0"/>
+  <testcase name="givenIllegalFirstCharacter_expectExpection" classname="org.barracudamvc.plankton.io.parser.json.JSONParserTest" time="0.0"/>
+  <testcase name="givenAlmostNull" classname="org.barracudamvc.plankton.io.parser.json.JSONParserTest" time="0.001"/>
+  <testcase name="givenOpenCloseBracket_expectEmptyList" classname="org.barracudamvc.plankton.io.parser.json.JSONParserTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

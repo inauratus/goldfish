@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.barracudamvc.core.helper.servlet.ServletWrapperFactoryTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2019-07-18T19:49:32" hostname="CHUCKLOWERY-68" time="0.002">
+  <properties/>
+  <testcase name="test_combine_given_empty_maps_expect_empty_result" classname="org.barracudamvc.core.helper.servlet.ServletWrapperFactoryTest" time="0.0"/>
+  <testcase name="given_post_or_get_expect_default_wrapper" classname="org.barracudamvc.core.helper.servlet.ServletWrapperFactoryTest" time="0.0"/>
+  <testcase name="given_custom_request_method_expect_custom_wrapper" classname="org.barracudamvc.core.helper.servlet.ServletWrapperFactoryTest" time="0.0"/>
+  <testcase name="test" classname="org.barracudamvc.core.helper.servlet.ServletWrapperFactoryTest" time="0.001"/>
+  <testcase name="test_combine_given_values_maps_expect_empty_result" classname="org.barracudamvc.core.helper.servlet.ServletWrapperFactoryTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

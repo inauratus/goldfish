@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.barracudamvc.plankton.data.ParamTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-07-18T19:49:33" hostname="CHUCKLOWERY-68" time="0.0">
+  <properties/>
+  <testcase name="testParam" classname="org.barracudamvc.plankton.data.ParamTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

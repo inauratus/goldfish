@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.barracudamvc.core.forms.DefaultFormElementTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2019-07-18T19:49:31" hostname="CHUCKLOWERY-68" time="0.04">
+  <properties/>
+  <testcase name="testGetValue_FromArray" classname="org.barracudamvc.core.forms.DefaultFormElementTest" time="0.027"/>
+  <testcase name="testSetDefaultValue_PrimitveArray" classname="org.barracudamvc.core.forms.DefaultFormElementTest" time="0.004"/>
+  <testcase name="testValue" classname="org.barracudamvc.core.forms.DefaultFormElementTest" time="0.002"/>
+  <testcase name="testGetValue_null" classname="org.barracudamvc.core.forms.DefaultFormElementTest" time="0.0"/>
+  <testcase name="testGetValue_FromArrayWhenPrimitive" classname="org.barracudamvc.core.forms.DefaultFormElementTest" time="0.001"/>
+  <testcase name="testGetValue_emptyString" classname="org.barracudamvc.core.forms.DefaultFormElementTest" time="0.0"/>
+  <testcase name="testSetDefaultValue_Collection" classname="org.barracudamvc.core.forms.DefaultFormElementTest" time="0.0"/>
+  <testcase name="testGetValue_FromCollection" classname="org.barracudamvc.core.forms.DefaultFormElementTest" time="0.0"/>
+  <testcase name="testSetDefaultValue_null" classname="org.barracudamvc.core.forms.DefaultFormElementTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.barracudamvc.core.forms.validators.DateRangeValidatorTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2019-07-18T19:49:31" hostname="CHUCKLOWERY-68" time="0.571">
+  <properties/>
+  <testcase name="testFloat" classname="org.barracudamvc.core.forms.validators.DateRangeValidatorTest" time="0.043"/>
+  <testcase name="testShort" classname="org.barracudamvc.core.forms.validators.DateRangeValidatorTest" time="0.013"/>
+  <testcase name="testDate" classname="org.barracudamvc.core.forms.validators.DateRangeValidatorTest" time="0.067"/>
+  <testcase name="testLong" classname="org.barracudamvc.core.forms.validators.DateRangeValidatorTest" time="0.011"/>
+  <testcase name="testBoolean" classname="org.barracudamvc.core.forms.validators.DateRangeValidatorTest" time="0.005"/>
+  <testcase name="testStringAfterToday" classname="org.barracudamvc.core.forms.validators.DateRangeValidatorTest" time="0.317"/>
+  <testcase name="testStringBeforeToday" classname="org.barracudamvc.core.forms.validators.DateRangeValidatorTest" time="0.083"/>
+  <testcase name="testDouble" classname="org.barracudamvc.core.forms.validators.DateRangeValidatorTest" time="0.017"/>
+  <testcase name="testInteger" classname="org.barracudamvc.core.forms.validators.DateRangeValidatorTest" time="0.009"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

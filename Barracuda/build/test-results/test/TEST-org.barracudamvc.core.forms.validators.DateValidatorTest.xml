@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.barracudamvc.core.forms.validators.DateValidatorTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-07-18T19:49:32" hostname="CHUCKLOWERY-68" time="0.342">
+  <properties/>
+  <testcase name="testString" classname="org.barracudamvc.core.forms.validators.DateValidatorTest" time="0.342"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

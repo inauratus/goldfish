@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<global-repository-setup>
+
+    <!-- set a String constant -->
+    <object class="org.barracudamvc.plankton.data.ValueObject">
+        <prop name="TEST_CLASS">org.barracudamvc.plankton.data.Param</prop>
+        <prop name="TEST_STRING">foo</prop>
+        <prop name="TEST_INT">-99</prop>
+        <prop name="TEST_SHORT">99</prop>
+        <prop name="TEST_LONG">99</prop>
+        <prop name="TEST_DOUBLE">99.0</prop>
+        <prop name="TEST_FLOAT">99.0</prop>
+        <prop name="TEST_BOOLEAN">true</prop>
+        <prop name="TEST_INT2">99</prop>
+        <prop name="TEST_SHORT2">99</prop>
+        <prop name="TEST_LONG2">99</prop>
+        <prop name="TEST_DOUBLE2">99.0</prop>
+        <prop name="TEST_FLOAT2">99.0</prop>
+        <prop name="TEST_BOOLEAN2">true</prop>
+        <method name="setTestString2" arg="foo" />
+        <method name="setTestString3" arg0="juju" arg1="bean" />
+    </object>
+
+
+    <!-- instantiate a StringBuffer -->
+    <object name="$sb" class="java.lang.StringBuffer">
+        <method name="append">my very elderly mother just sent us nine pizzas</method>
+    </object>
+    <register key="TEST_KEY1" val="$sb"/>
+
+	<object class="org.barracudamvc.plankton.data.ValueObject">
+		<method name="setTestValue1" arg="$sb" />
+	</object>
+	
+	
+    <!-- instantiate another StringBuffer (overrides previous $sb ref) -->
+    <object name="$sb" class="java.lang.StringBuffer">
+        <method name="append">sometimes you feel like a nut, sometimes you don't</method>
+        <method name="toString" return="$s" />
+    </object>
+    <register key="TEST_KEY2" val="$sb"/>
+    <register key="TEST_KEY3" val="$s"/>
+
+    <!-- make sure we can access the $this object -->
+    <object name="$this">
+        <method name="getClass" return="$tcl" />
+    </object>
+    <register key="TEST_KEY4" val="$tcl"/>
+
+    <!-- make sure we can access a static method in a class with a protected constructor -->
+    <object class="org.barracudamvc.core.util.dom.DefaultDOMLoader">
+        <method name="getGlobalInstance" return="$dl" />
+    </object>
+    <register key="TEST_KEY5" val="$dl"/>
+
+
+
+</global-repository-setup>

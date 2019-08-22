@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<global-repository-setup>
+
+    <object name="$home" class="java.io.File" arg="http://www.barracudamvc.org"/>
+
+    <object class="org.barracudamvc.plankton.data.ValueObject">
+        <prop name="HOME"  ref="$home" />
+    </object>
+
+</global-repository-setup>

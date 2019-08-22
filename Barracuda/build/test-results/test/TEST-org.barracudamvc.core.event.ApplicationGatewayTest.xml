@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.barracudamvc.core.event.ApplicationGatewayTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2019-07-18T19:49:31" hostname="CHUCKLOWERY-68" time="0.036">
+  <properties/>
+  <testcase name="testValidEventWithoutListeners_ExpectErrorMessage" classname="org.barracudamvc.core.event.ApplicationGatewayTest" time="0.028"/>
+  <testcase name="testRespondWith404False_PageNotFound_200Returned" classname="org.barracudamvc.core.event.ApplicationGatewayTest" time="0.002"/>
+  <testcase name="testRespondWith404True_PageNotFound_404Returned" classname="org.barracudamvc.core.event.ApplicationGatewayTest" time="0.0"/>
+  <testcase name="testDispatchToControl_ReceiveResponseFromRenderer" classname="org.barracudamvc.core.event.ApplicationGatewayTest" time="0.005"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
