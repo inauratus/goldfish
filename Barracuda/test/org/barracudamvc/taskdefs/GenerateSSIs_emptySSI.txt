@@ -1,2 +1,0 @@
-<!-- start emptySSI.ssi -->
-<!-- end emptySSI.ssi -->

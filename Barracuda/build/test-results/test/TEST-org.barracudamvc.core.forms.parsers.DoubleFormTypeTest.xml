@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.barracudamvc.core.forms.parsers.DoubleFormTypeTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2019-07-18T19:49:31" hostname="CHUCKLOWERY-68" time="0.001">
-  <properties/>
-  <testcase name="testValid" classname="org.barracudamvc.core.forms.parsers.DoubleFormTypeTest" time="0.0"/>
-  <testcase name="testToInfinity" classname="org.barracudamvc.core.forms.parsers.DoubleFormTypeTest" time="0.001"/>
-  <testcase name="testInvalid" classname="org.barracudamvc.core.forms.parsers.DoubleFormTypeTest" time="0.0"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

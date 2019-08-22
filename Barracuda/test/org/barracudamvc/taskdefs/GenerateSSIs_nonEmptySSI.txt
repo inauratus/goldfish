@@ -1,3 +1,0 @@
-<!-- start nonEmptySSI.ssi -->
-    I contain text
-<!-- end nonEmptySSI.ssi -->

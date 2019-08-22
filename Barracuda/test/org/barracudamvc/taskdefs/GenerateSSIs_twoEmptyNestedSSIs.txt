@@ -1,4 +1,0 @@
-<!-- start nestedEmptySSI.ssi -->
-    <!-- start innerEmptySSI.ssi -->
-    <!-- end innerEmptySSI.ssi -->
-<!-- end nestedEmptySSI.ssi -->

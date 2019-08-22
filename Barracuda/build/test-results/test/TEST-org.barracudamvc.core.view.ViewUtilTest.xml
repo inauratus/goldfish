@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.barracudamvc.core.view.ViewUtilTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-07-18T19:49:32" hostname="CHUCKLOWERY-68" time="0.025">
-  <properties/>
-  <testcase name="testType" classname="org.barracudamvc.core.view.ViewUtilTest" time="0.024"/>
-  <testcase name="testMockup" classname="org.barracudamvc.core.view.ViewUtilTest" time="0.0"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

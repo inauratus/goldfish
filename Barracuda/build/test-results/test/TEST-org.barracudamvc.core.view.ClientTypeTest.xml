@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.barracudamvc.core.view.ClientTypeTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-07-18T19:49:32" hostname="CHUCKLOWERY-68" time="0.016">
-  <properties/>
-  <testcase name="testTypes" classname="org.barracudamvc.core.view.ClientTypeTest" time="0.016"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
