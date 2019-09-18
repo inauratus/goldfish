@@ -478,12 +478,13 @@ public abstract class BlockIterateHandler extends DefaultBaseEventListener {
                     //
                     //Note also the isCSVRow and isCSVCol stuff: basically, because we are printing one node 
                     //at a time (because there may be a block iterator somewhere in the children), the nodes end
-                    //up getting handled differently by the csv writer (it won't pad with quotes, add on an eol, etc)
+                    //up getting handled differently by the csv writer (it won't pad with quotes, add on an SYSTEM_LINE_ENDING, etc)
                     //so we have to handle that here. I know its hokey, but... :-(
                     String tag = el.getTagName().toLowerCase();
                     boolean printNode = true;
                     boolean isCSVRow = false;
                     boolean isCSVCol = false;
+                    String csvEOL = "";
                     if (writer instanceof CommaSeparatedDOMWriter) {
                         printNode = (!tag.equals(CommaSeparatedDOMWriter.DOCUMENT_TYPE)
                                 && !tag.equals(CommaSeparatedDOMWriter.ELEMENT_ROW)
@@ -493,6 +494,7 @@ public abstract class BlockIterateHandler extends DefaultBaseEventListener {
                                 && !tag.equals(CommaSeparatedDOMWriter.ELEMENT_DIV));
                         isCSVRow = (tag.equals(CommaSeparatedDOMWriter.ELEMENT_ROW));
                         isCSVCol = (tag.equals(CommaSeparatedDOMWriter.ELEMENT_HEADER) || tag.equals(CommaSeparatedDOMWriter.ELEMENT_COLUMN));
+                        csvEOL = ((CommaSeparatedDOMWriter)writer).getLineEnding();
                     }
                     if (logger.isDebugEnabled()) {
                         logger.debug("Processing tag:<" + tag + "> as plain text (printNode=" + printNode + ", isCSVRow=" + isCSVRow + ", isCSVCol=" + isCSVCol + ")");
@@ -546,7 +548,7 @@ public abstract class BlockIterateHandler extends DefaultBaseEventListener {
                         }
                     }
                     if (isCSVRow) {
-                        out.write(CommaSeparatedDOMWriter.eol);
+                        out.write(csvEOL);
                     }
                     out.flush();
                 }

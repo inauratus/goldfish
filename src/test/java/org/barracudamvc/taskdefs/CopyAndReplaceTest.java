@@ -39,7 +39,7 @@ public class CopyAndReplaceTest {
     @Test
     public void givenAFileWithText_expectByteArrayToContainFileContents() throws URISyntaxException, IOException {
         targetFile = getTestFile("CopyAndReplace_nonEmptyFile.txt");
-        assertThat(byteToString(copyAndReplace.readFileToByteArray(targetFile)), is("this is not empty\r\n" +
+        assertThat(byteToString(copyAndReplace.readFileToByteArray(targetFile)), is("this is not empty\n" +
                 ":)"));
     }
 
@@ -53,15 +53,15 @@ public class CopyAndReplaceTest {
     @Test
     public void givenTargetFileWithSingleIncludeForNonEmptyTextSSI_expectIncludeReplacedBySSIContent() throws URISyntaxException {
         targetFile = getTestFile("CopyAndReplace_nonEmptyIncludeSSI.txt");
-        assertThat(copyAndReplace.replaceIncludeTags(targetFile, fromDirectory, parentFiles), is("\r\n    I contain text\r\n"));
+        assertThat(copyAndReplace.replaceIncludeTags(targetFile, fromDirectory, parentFiles), is("\n    I contain text\n"));
 
     }
 
     @Test
     public void givenTargetFileWithSingleIncludeForNonEmptySSI_expectIncludeReplacedBySSI() throws URISyntaxException {
         targetFile = getTestFile("CopyAndReplace_emptySSIInclude.txt");
-        assertThat(copyAndReplace.replaceIncludeTags(targetFile, fromDirectory, parentFiles), is("<!-- start CR_nonEmptySSI.ssi -->\r\n" +
-                "    I contain text\r\n" +
+        assertThat(copyAndReplace.replaceIncludeTags(targetFile, fromDirectory, parentFiles), is("<!-- start CR_nonEmptySSI.ssi -->\n" +
+                "    I contain text\n" +
                 "<!-- end CR_nonEmptySSI.ssi -->"));
 
     }
@@ -69,29 +69,29 @@ public class CopyAndReplaceTest {
     @Test
     public void givenTargetFileWithSingleIncludeForTwoEmptySSIs_expectIncludeTagsReplacedByTwoSSIs() throws URISyntaxException {
         targetFile = getTestFile("CopyAndReplace_twoEmptySSI.txt");
-        assertThat(copyAndReplace.replaceIncludeTags(targetFile, fromDirectory, parentFiles), is("<!-- start CR_firstEmptySSI.ssi -->\r\n" +
-                "<!-- end CR_firstEmptySSI.ssi -->\r\n" +
-                "\r\n" +
-                "<!-- start CR_secondEmptySSI.ssi -->\r\n" +
+        assertThat(copyAndReplace.replaceIncludeTags(targetFile, fromDirectory, parentFiles), is("<!-- start CR_firstEmptySSI.ssi -->\n" +
+                "<!-- end CR_firstEmptySSI.ssi -->\n" +
+                "\n" +
+                "<!-- start CR_secondEmptySSI.ssi -->\n" +
                 "<!-- end CR_secondEmptySSI.ssi -->"));
     }
 
     @Test
     public void givenTargetFileWithTwoIncludesForEmptySSI_expectEachIncludeReplacedByEmptySSI() throws URISyntaxException {
         targetFile = getTestFile("CopyAndReplace_twoInclude.txt");
-        assertThat(copyAndReplace.replaceIncludeTags(targetFile, fromDirectory, parentFiles), is("<!-- start CR_nonEmptySSI.ssi -->\r\n" +
-                "    I contain text\r\n" +
-                "<!-- end CR_nonEmptySSI.ssi -->" + "\r\n\r\n    I contain text\r\n"));
+        assertThat(copyAndReplace.replaceIncludeTags(targetFile, fromDirectory, parentFiles), is("<!-- start CR_nonEmptySSI.ssi -->\n" +
+                "    I contain text\n" +
+                "<!-- end CR_nonEmptySSI.ssi -->" + "\n\n    I contain text\n"));
     }
 
     @Test
     public void givenTargetFileWithSingleIncludeForSingleSSIWithInclude_expectIncludeReplacedBySSIAndSSIContentsOfSecondInclude() throws URISyntaxException {
         targetFile = getTestFile("CopyAndReplace_singleIncludeSSI.txt");
-        assertThat(copyAndReplace.replaceIncludeTags(targetFile, fromDirectory, parentFiles), is("<!-- start CR_SSI.ssi -->\r\n" +
-                "In SSI\r\n" +
-                "<!-- end CR_SSI.ssi -->\r\n" + "<!-- start CR_nonEmptySSI.ssi -->\r\n" +
-                "    I contain text\r\n" +
-                "<!-- end CR_nonEmptySSI.ssi -->\r\n"));
+        assertThat(copyAndReplace.replaceIncludeTags(targetFile, fromDirectory, parentFiles), is("<!-- start CR_SSI.ssi -->\n" +
+                "In SSI\n" +
+                "<!-- end CR_SSI.ssi -->\n" + "<!-- start CR_nonEmptySSI.ssi -->\n" +
+                "    I contain text\n" +
+                "<!-- end CR_nonEmptySSI.ssi -->\n"));
     }
 
     @Test

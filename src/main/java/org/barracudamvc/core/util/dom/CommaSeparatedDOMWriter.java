@@ -19,7 +19,6 @@
  */
 package org.barracudamvc.core.util.dom;
 
-// java imports:
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -40,30 +39,25 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.html.HTMLDocument;
 
-/**
- * @author  shawnw@atmreports.com
- * @since   saw_082603_2
- */
 public class CommaSeparatedDOMWriter implements DOMWriter {
 
-    //standard defs
     private static final Class CLASS = CommaSeparatedDOMWriter.class;
     private static final Logger logger = Logger.getLogger(CLASS);
-    public static final String eol = System.getProperty("line.separator");
-    //node definitions
+
     public static final String DOCUMENT_TYPE = "table";
     public static final String ELEMENT_ROW = "tr";
     public static final String ELEMENT_HEADER = "th";
     public static final String ELEMENT_COLUMN = "td";
     public static final String ELEMENT_SPAN = "span";
     public static final String ELEMENT_DIV = "div";
-    //instance objects
+
     protected String contentType = "text/plain";
     protected String contentDisposition = null;
     protected boolean preventCaching = false;
     protected boolean leaveWriterOpen = false;
     protected int maxAge = 0;
     private static final Pattern SLASH_PATTERN = Pattern.compile("\"");
+    private String lineEnding = System.getProperty("line.separator");
 
     /**
      * Create a new CommaSeparatedDOMWriter using the default values.
@@ -77,8 +71,8 @@ public class CommaSeparatedDOMWriter implements DOMWriter {
     /**
      * Create a new CommaSeparatedDOMWriter with the supplied values.
      *
-     * @param   icontentType            The content type to use
-     * @param   icontentDisposition     The content disposition to use
+     * @param icontentType        The content type to use
+     * @param icontentDisposition The content disposition to use
      */
     public CommaSeparatedDOMWriter(String icontentType, String icontentDisposition) {
         setContentType(icontentType);
@@ -126,32 +120,20 @@ public class CommaSeparatedDOMWriter implements DOMWriter {
      * Write a DOM to a ServletResponse object.
      * This method will automatically set the content type for you.
      *
-     * @param   node    The DOM node to be written out
-     * @param   resp    The HttpServletResponse object to write to
+     * @param node The DOM node to be written out
+     * @param resp The HttpServletResponse object to write to
      */
     @Override
     public void write(Node node, HttpServletResponse resp) throws IOException {
-
-        prepareResponse(node, resp);
-
-        //write the dom
-
-        //saw_031604_1 begin
-        // We want to use resp.getOutputStream() instead of resp.getWriter() because the PrintWriter
-        // returned by getWriter() apparently has no buffer whereas the ServletOutputStream does.
-        // This means that using the PrintWriter would cause the message chunks in the response to
-        // be extremely small, with each call to print() causing a new chunk to be sent.
-
-//        write(node, resp.getWriter());
+        prepareResponse(node, resp);       
         write(node, new OutputStreamWriter(resp.getOutputStream()));
-        //saw_031604_1 end
     }
 
     /**
      * Write a DOM to an OutputStream.
      *
-     * @param   node    The DOM node to be written out
-     * @param   out     The OutputStream to be written to
+     * @param node The DOM node to be written out
+     * @param out  The OutputStream to be written to
      */
     @Override
     public void write(Node node, OutputStream out) throws IOException {
@@ -161,8 +143,8 @@ public class CommaSeparatedDOMWriter implements DOMWriter {
     /**
      * Write a DOM to a Writer.
      *
-     * @param   node    The DOM node to be written out
-     * @param   writer  The writer to be written to
+     * @param node   The DOM node to be written out
+     * @param writer The writer to be written to
      */
     @Override
     public void write(Node node, Writer writer) throws IOException {
@@ -258,22 +240,19 @@ public class CommaSeparatedDOMWriter implements DOMWriter {
 
         String data = sw.toString();
         if (parent.getPreviousSibling() != null) {
-            writer.write(",");   //if our parent (the row) is NOT the first sibling, prepend on a comma
+            writer.write(",");
         }
-        writer.write('"');                                          //leading quote
-        //change any embedded quotes to double quotes
-        writer.write(SLASH_PATTERN.matcher(data).replaceAll("\"\""));                
-        writer.write('"');                                          //trailing quote
-        if (parent.getNextSibling() == null) {
-            // if our parent (the row) is the LAST row, write an eol - 
-            // NOTE: this may be a problem, because its the server's eol marker 
-            // - technically we should probably be using the client's eol marker
-            writer.write(eol);       
+        writer.write('"');                          
+        
+        writer.write(SLASH_PATTERN.matcher(data).replaceAll("\"\""));
+        writer.write('"');                          
+        if (parent.getNextSibling() == null) {           
+            writer.write(lineEnding);
         }
     }
 
     /**
-     * Set the content type (defaults to "text/html" or "text/xml" depending 
+     * Set the content type (defaults to "text/html" or "text/xml" depending
      * on the document type
      */
     public final void setContentType(String icontentType) {
@@ -288,7 +267,7 @@ public class CommaSeparatedDOMWriter implements DOMWriter {
     }
 
     /**
-     * Set the content disposition (ie. "inline; filename=foo.txt", 
+     * Set the content disposition (ie. "inline; filename=foo.txt",
      * defaults to null)
      */
     public final void setContentDisposition(String icontentDisposition) {
@@ -325,20 +304,37 @@ public class CommaSeparatedDOMWriter implements DOMWriter {
 
     /**
      * Returns the max amount of time any cache can hold onto this document.
+     *
      * @return the max age that intermediates may cache this document
      */
     public final int getMaxAge() {
         return maxAge;
     }
-    
+
     /**
-     * Set the headers to prevent caching. This will send the appropriate 
+     * Set the headers to prevent caching. This will send the appropriate
      * headers to disallow intermediates from caching the data sent to
      * them from the request.
-     * 
-     * @param prevent 
+     *
+     * @param prevent
      */
     public final void preventCaching(boolean prevent) {
         preventCaching = prevent;
+    }
+
+
+    public String getLineEnding() {
+        return lineEnding;
+    }
+
+    /**
+     * Sets the lineEnding to use for each row printed by the writer.
+     *
+     * @param lineEnding to use
+     * @return the instance of the writer
+     */
+    public CommaSeparatedDOMWriter setLineEnding(String lineEnding) {
+        this.lineEnding = lineEnding;
+        return this;
     }
 }
