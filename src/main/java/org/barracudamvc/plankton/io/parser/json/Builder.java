@@ -1,6 +1,7 @@
 package org.barracudamvc.plankton.io.parser.json;
 
 public interface Builder<Type> {
+    void emptyStream();
 
     public void builderMap();
 

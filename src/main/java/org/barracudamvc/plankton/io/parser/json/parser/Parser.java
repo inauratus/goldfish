@@ -17,6 +17,7 @@ public class Parser {
         {
             tran(INITIAL, OPEN_BRACE, MAP, new BuildMap(State.FINISHED));
             tran(INITIAL, OPEN_BRACKET, ARRAY, new BuildArray(FINISHED));
+            tran(INITIAL, EOS, null, new BuildEmptyStream(FINISHED));
         }
         map:
         {
@@ -150,6 +151,21 @@ public class Parser {
         @Override
         public void accept(Parser parser) {
             parser.builder.buildArray();
+            parser.push(state);
+        }
+    }
+
+    private static class BuildEmptyStream implements Operation {
+
+        private final State state;
+
+        public BuildEmptyStream(State state) {
+            this.state = state;
+        }
+
+        @Override
+        public void accept(Parser parser) {
+            parser.builder.emptyStream();
             parser.push(state);
         }
     }

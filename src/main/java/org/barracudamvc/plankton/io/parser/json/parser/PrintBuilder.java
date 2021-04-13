@@ -14,6 +14,11 @@ public class PrintBuilder implements Builder<String> {
     }
 
     @Override
+    public void emptyStream() {
+        builder.append("");
+    }
+
+    @Override
     public void builderMap() {
         builder.append(depth.peek()).append("{\n");
         depth.push(depth.peek() + "\t");

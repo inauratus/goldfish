@@ -22,6 +22,15 @@ public class JSONParserTest {
         parse("abcd");
     }
 
+    @Test(expected = Exception.class)
+    public void givenEmptyStreamUsingDefaultBuilderExpect_emptyMap() {
+        Object result = parse("");
+
+        assertThat(result, instanceOf(Map.class));
+        Map map = (Map) result;
+        assertThat(map.size(), is(0));
+    }
+
     @Test
     public void givenOpenCloseBrases_expectEmptyMap() {
         Object result = parse("{}");
@@ -67,7 +76,7 @@ public class JSONParserTest {
 //        assertThat((List)list.get("a"), Matchers.contains(1,2,3));
 //    }
 //
-//    
+//
 
     @Test
     public void givenArrayWithNull_expectAListContainingNull() {

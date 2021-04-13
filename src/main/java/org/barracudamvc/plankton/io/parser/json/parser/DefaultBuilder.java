@@ -23,6 +23,11 @@ public class DefaultBuilder implements Builder<Object> {
     }
 
     @Override
+    public void emptyStream() {
+        buildNode(new LinkedHashMap<>());
+    }
+
+    @Override
     public void builderMap() {
         buildNode(new LinkedHashMap());
     }
