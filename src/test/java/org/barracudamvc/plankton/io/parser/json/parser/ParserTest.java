@@ -30,14 +30,26 @@ public class ParserTest {
     }
     
     @Test
-    public void testArrayFirst() {
-        ByteArrayInputStream stream = new ByteArrayInputStream(" [1,2,3] ".getBytes());
+    public void test() {
+        ByteArrayInputStream stream = new ByteArrayInputStream(new byte[0]);
         
         Parser parserV2 = new Parser();
         DefaultBuilder builder = new DefaultBuilder();
         
         parserV2.parse(new LexerStream(stream), builder);
         
+        Assert.assertTrue(builder.getResult() instanceof Map);
+    }
+
+    @Test
+    public void testArrayFirst() {
+        ByteArrayInputStream stream = new ByteArrayInputStream(" [1,2,3] ".getBytes());
+
+        Parser parserV2 = new Parser();
+        DefaultBuilder builder = new DefaultBuilder();
+
+        parserV2.parse(new LexerStream(stream), builder);
+
         Assert.assertTrue(builder.getResult() instanceof List);
 
     }

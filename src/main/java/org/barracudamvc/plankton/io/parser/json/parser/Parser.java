@@ -17,7 +17,7 @@ public class Parser {
         {
             tran(INITIAL, OPEN_BRACE, MAP, new BuildMap(State.FINISHED));
             tran(INITIAL, OPEN_BRACKET, ARRAY, new BuildArray(FINISHED));
-            tran(INITIAL, EOS, null, new BuildEmptyStream(FINISHED));
+            tran(INITIAL, EOS, FINISHED, new BuildEmptyStream(FINISHED));
         }
         map:
         {

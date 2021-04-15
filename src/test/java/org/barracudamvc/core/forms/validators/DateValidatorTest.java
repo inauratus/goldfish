@@ -24,6 +24,7 @@ import org.barracudamvc.core.forms.ValidatorTestCase;
 import org.barracudamvc.plankton.data.DefaultStateMap;
 import org.barracudamvc.testbed.TestUtil;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.*;
@@ -61,15 +62,13 @@ public class DateValidatorTest {
         assertValid("2001", "1", "1");
         assertValid("2005", "1", "1");
         assertValid("2001", "12", "1");
-        assertValid("2000", "2", "29");
-        assertValid("2004", "2", "29");
+
         assertValid("1999", "12", "31");
         assertValid("2010", "12", "31");
         assertValid("2001", "01", "01");
         assertValid("2005", "01", "01");
         assertValid("2001", "12", "01");
-        assertValid("2000", "02", "29");
-        assertValid("2004", "02", "29");
+
     }
 
     private Locale myOriginalLocale;

@@ -22,7 +22,7 @@ public class JSONParserTest {
         parse("abcd");
     }
 
-    @Test(expected = Exception.class)
+    @Test()
     public void givenEmptyStreamUsingDefaultBuilderExpect_emptyMap() {
         Object result = parse("");
 

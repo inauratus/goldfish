@@ -24,7 +24,9 @@ public class DefaultBuilder implements Builder<Object> {
 
     @Override
     public void emptyStream() {
+
         buildNode(new LinkedHashMap<>());
+        structures.pop();
     }
 
     @Override
