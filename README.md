@@ -1,4 +1,4 @@
-# Goldfish #
+# Goldfish # <img src="Goldfish.png" width="150" align="left">
 
 ![Build](https://github.com/inauratus/goldfish/actions/workflows/gradle.yml/badge.svg)
 
