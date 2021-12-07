@@ -19,8 +19,21 @@ public class CustomRequestWrapper extends HttpServletRequestWrapper implements H
         this.content = content;
     }
 
-    public Map<String, String[]> getParameterMap() {
+    @Override
+    public String[] getParameterValues(String name) {
+        List<Object> objects = content.get(name);
+        if (objects == null) return new String[0];
 
+        String[] results = new String[content.size()];
+        for (int i = 0, objectsSize = objects.size(); i < objectsSize; i++) {
+            Object object = objects.get(i);
+            results[i] = (String.valueOf(object));
+        }
+
+        return results;
+    }
+
+    public Map<String, String[]> getParameterMap() {
         HashMap<String, String[]> result = new HashMap<>();
         for (Map.Entry<String, List<Object>> toConvert : content.entrySet()) {
             List<Object> value = toConvert.getValue();
@@ -31,7 +44,6 @@ public class CustomRequestWrapper extends HttpServletRequestWrapper implements H
 
             result.put(toConvert.getKey(), strings);
         }
-
 
         return result;
     }
@@ -52,8 +64,6 @@ public class CustomRequestWrapper extends HttpServletRequestWrapper implements H
     public Enumeration<String> getParameterNames() {
         return Collections.enumeration(content.keySet());        
     }
-    
-    
 
     @Override
     public Map<String, List<Object>> getContentValues() {
