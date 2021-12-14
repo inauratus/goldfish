@@ -27,7 +27,8 @@ public class CustomRequestWrapper extends HttpServletRequestWrapper implements H
         String[] results = new String[content.size()];
         for (int i = 0, objectsSize = objects.size(); i < objectsSize; i++) {
             Object object = objects.get(i);
-            results[i] = (String.valueOf(object));
+            if (object == null) continue;
+            results[i] = String.valueOf(object);
         }
 
         return results;
@@ -39,6 +40,7 @@ public class CustomRequestWrapper extends HttpServletRequestWrapper implements H
             List<Object> value = toConvert.getValue();
             String[] strings = new String[value.size()];
             for (int i = 0; i < value.size(); i++) {
+                if (value.get(i) == null) continue;
                 strings[i] = String.valueOf(value.get(i));
             }
 
