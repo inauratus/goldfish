@@ -24,7 +24,7 @@ public class CustomRequestWrapper extends HttpServletRequestWrapper implements H
         List<Object> objects = content.get(name);
         if (objects == null) return new String[0];
 
-        String[] results = new String[content.size()];
+        String[] results = new String[objects.size()];
         for (int i = 0, objectsSize = objects.size(); i < objectsSize; i++) {
             Object object = objects.get(i);
             if (object == null) continue;
