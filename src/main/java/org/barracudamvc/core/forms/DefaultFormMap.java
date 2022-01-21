@@ -238,7 +238,7 @@ public class DefaultFormMap implements FormMap, AcceptsUnparsableElements {
         if (vals == null)
             return null;
         else if (vals.length == 1)
-            return (DesiredType) (vals[0].equals("~Null~") ? null : vals[0]);
+            return (DesiredType) ("~Null~".equals(vals[0]) ? null : vals[0]);
         else {
             List<String> list = new ArrayList<>();
             for (int i = 0, max = vals.length; i < max; i++) {

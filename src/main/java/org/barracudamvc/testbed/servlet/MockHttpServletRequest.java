@@ -82,6 +82,10 @@ public class MockHttpServletRequest implements HttpServletRequest {
         this.requestURL = requestURL;
     }
 
+    public final void addParam(Param param){
+        this.paramList.add(param);
+    }
+
     //-------------------- MockHttpServletRequest ----------------
     public final void setParamStr(String paramStr) {
         //clear the paramList

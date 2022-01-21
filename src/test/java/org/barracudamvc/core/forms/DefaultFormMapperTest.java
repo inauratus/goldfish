@@ -16,12 +16,15 @@ import org.barracudamvc.core.forms.parsers.ByteArrayFormType;
 import org.barracudamvc.plankton.DateUtil;
 import org.barracudamvc.plankton.data.DefaultStateMap;
 import org.barracudamvc.plankton.data.MapStateMap;
+import org.barracudamvc.plankton.data.Param;
 import org.barracudamvc.plankton.http.DummyFileItem;
 import org.barracudamvc.plankton.http.MockFileItem;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+
+import org.barracudamvc.testbed.servlet.MockHttpServletRequest;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -53,6 +56,30 @@ public class DefaultFormMapperTest extends AbstractTesttFormMap {
         String[] strings = new String[]{"1", "2", "3"};
 
         assertSetData(strings, new ArrayList(Arrays.asList(strings)), FormType.STRING);
+    }
+
+    @Test
+    public void testNullFieldIsPassedThrough() {
+        MockHttpServletRequest request = new MockHttpServletRequest();
+        request.addParam(new Param("Field", null));
+        FormMap form = new DefaultFormMap();
+
+        form.defineElement(new DefaultFormElement("Field", FormType.STRING));
+        form.map(request);
+
+        assertNull(form.getElement("Field").getVal());
+    }
+
+    @Test
+    public void testNullMagicStringFieldIsPassedThroughAsNull() {
+        MockHttpServletRequest request = new MockHttpServletRequest();
+        request.addParam(new Param("Field", "~Null~"));
+        FormMap form = new DefaultFormMap();
+
+        form.defineElement(new DefaultFormElement("Field", FormType.STRING));
+        form.map(request);
+
+        assertNull(form.getElement("Field").getVal());
     }
 
     @Test
