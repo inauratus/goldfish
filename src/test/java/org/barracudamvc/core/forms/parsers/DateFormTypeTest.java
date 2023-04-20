@@ -15,8 +15,11 @@ import org.barracudamvc.core.forms.ParseException;
 import org.junit.Test;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  *
@@ -36,6 +39,12 @@ public class DateFormTypeTest extends AbstractParser {
     public void testValid_degenerate() {
         assertParsed(null, null);
         assertParsed("", null);
+    }
+
+    @Test
+    public void testUSEnglish_SillyFormats() throws Exception {
+        Date parse = (Date) getParser().parse("04/20/2023 4:00 PM");
+        assertEquals(parse, new SimpleDateFormat("yyyy-MM-dd HH:mm").parse("2023-04-20 16:00"));
     }
 
     @Test

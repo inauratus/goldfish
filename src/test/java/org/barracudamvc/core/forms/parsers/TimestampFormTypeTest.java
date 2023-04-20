@@ -8,6 +8,7 @@ package org.barracudamvc.core.forms.parsers;
 
 import java.sql.Timestamp;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import org.barracudamvc.core.forms.FormType;
@@ -62,19 +63,19 @@ public class TimestampFormTypeTest extends AbstractParser {
     }
 
     public void assertParsedShortFormat(String toParse, String resultString) {
-        assertParsed(toParse, parseTimestamp(resultString, DateFormat.SHORT));
+        assertParsed(toParse, parseTimestamp(resultString, "M/dd/yy hh:mm a"));
     }
 
     public void assertParsedMediumFormat(String toParse, String resultString) {
-        assertParsed(toParse, parseTimestamp(resultString, DateFormat.MEDIUM));
+        assertParsed(toParse, parseTimestamp(resultString, "MMM dd, yyyy hh:mm:ss a"));
     }
 
     public void assertParseLongFormat(String toParse, String resultString) {
-        assertParsed(toParse, parseTimestamp(resultString, DateFormat.LONG));
+        assertParsed(toParse, parseTimestamp(resultString, "MMM dd, yyyy hh:mm:ss a zz"));
     }
 
     public void assertParseFullFormat(String toParse, String resultString) {
-        assertParsed(toParse, parseTimestamp(resultString, DateFormat.FULL));
+        assertParsed(toParse, parseTimestamp(resultString, "E, MMM dd, yyyy hh:mm:ss a zz"));
     }
 
     protected DateFormat getShortDateFormatter() {
@@ -98,6 +99,14 @@ public class TimestampFormTypeTest extends AbstractParser {
     protected Timestamp parseTimestamp(String timestamp, int format) {
         try {
             return new Timestamp(getTimestampDateFormat(format).parse(timestamp).getTime());
+        } catch (java.text.ParseException ex) {
+            return null;
+        }
+    }
+
+    protected Timestamp parseTimestamp(String timestamp, String format) {
+        try {
+            return new Timestamp(new SimpleDateFormat(format).parse(timestamp).getTime());
         } catch (java.text.ParseException ex) {
             return null;
         }

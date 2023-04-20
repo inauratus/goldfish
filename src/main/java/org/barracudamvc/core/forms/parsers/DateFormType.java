@@ -25,10 +25,13 @@ public class DateFormType extends AbstractDateTimeFormType<Date> {
             new SimpleDateFormatFactory("MM-dd-yyyy"),
             new YearFirstDateParser("yyyy-MM-dd"),
             new SimpleDateFormatFactory("yyyy-MM-dd HH:mm:ss.S"),
+            new SimpleDateFormatFactory("MM/dd/yyyy hh:mm:ss a", true),
+            new SimpleDateFormatFactory("MM/dd/yyyy hh:mm a", true),
             new DateInstance(DateFormat.SHORT),
             new DateInstance(DateFormat.MEDIUM),
             new DateInstance(DateFormat.LONG),
-            new DateInstance(DateFormat.FULL)};
+            new DateInstance(DateFormat.FULL),
+    };
 
     @Override
     public Class<Date> getFormClass() {

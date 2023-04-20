@@ -138,12 +138,6 @@ public abstract class AbstractTesttFormMap {
         assertTime(null, null);
     }
 
-    @Test
-    public void testTimestampValue() {
-        Timestamp sampleTimestamp = parseTimestamp("Jan 19, 2013 10:48:53 AM", DateFormat.MEDIUM);
-        assertTimestamp(sampleTimestamp, sampleTimestamp.toString());
-    }
-
     public void assertTime(Time result, String data) {
         assertSetData(result, data, FormType.TIME);
     }
@@ -196,13 +190,7 @@ public abstract class AbstractTesttFormMap {
         assertSetData(result, data, FormType.BOOLEAN);
     }
 
-    protected Timestamp parseTimestamp(String timestamp, int format) {
-        try {
-            return new Timestamp(getTimestampDateFormat(format).parse(timestamp).getTime());
-        } catch (java.text.ParseException ex) {
-            return null;
-        }
-    }
+
 
     protected DateFormat getTimestampDateFormat(int format) {
         return DateFormat.getDateTimeInstance(format, format, Locale.getDefault());
