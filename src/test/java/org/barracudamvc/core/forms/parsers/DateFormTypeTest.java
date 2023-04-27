@@ -43,8 +43,10 @@ public class DateFormTypeTest extends AbstractParser {
 
     @Test
     public void testUSEnglish_SillyFormats() throws Exception {
-        Date parse = (Date) getParser().parse("04/20/2023 4:00 PM");
-        assertEquals(parse, new SimpleDateFormat("yyyy-MM-dd HH:mm").parse("2023-04-20 16:00"));
+        assertEquals((Date) getParser().parse("4/19/23 12:00:01 AM"), new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2023-04-19 00:00:01"));
+        assertEquals((Date) getParser().parse("4/19/23 12:00 AM"), new SimpleDateFormat("yyyy-MM-dd HH:mm").parse("2023-04-19 00:00"));
+        assertEquals((Date) getParser().parse("04/20/2023 4:00 PM"), new SimpleDateFormat("yyyy-MM-dd HH:mm").parse("2023-04-20 16:00"));
+        assertEquals((Date) getParser().parse("04/20/2023 4:00:10 PM"), new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2023-04-20 16:00:10"));
     }
 
     @Test
