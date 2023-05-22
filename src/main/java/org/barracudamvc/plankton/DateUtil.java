@@ -19,8 +19,7 @@
  */
 package org.barracudamvc.plankton;
 
-// import java specifics
-import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -29,39 +28,15 @@ import java.util.Date;
  */
 public class DateUtil {
 
-//csc_080904_1_start
-    private static DateFormat dfShort = DateFormat.getDateInstance(DateFormat.SHORT);
-    private static DateFormat dfMedium = DateFormat.getDateInstance(DateFormat.MEDIUM);
-    private static DateFormat dfLong = DateFormat.getDateInstance(DateFormat.LONG);
-    private static DateFormat dfFull = DateFormat.getDateInstance(DateFormat.FULL);
-    private static DateFormat dfTimestamp = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.MEDIUM);
-    private static DateFormat dfShortTime = DateFormat.getTimeInstance(DateFormat.SHORT);
-    private static DateFormat dfTime = DateFormat.getTimeInstance(DateFormat.MEDIUM);
-//csc_080904_1_end
-
-    //===========================================================================
-    // CONSTRUCTORS
-    //===========================================================================
-    //===========================================================================
-    // QUERY METHODS
-    //===========================================================================
-    //===========================================================================
-    // MUTATOR METHODS
-    //===========================================================================
-//csc_080904_1_start
-    //===========================================================================
-    // Formatting Methods
-    //===========================================================================
     /**
-     * Easily format a millis value as a date (default = SHORT)
-     * @since csc_080904_1
+     * Easily format a millis value as a date (M/d/yy)
      */
     public static String getDateStr(long millis) {
         return getShortDateStr(new Date(millis));
     }
 
     /**
-     * Easily format a date (default = SHORT).
+     * Easily format a date (M/d/yy).
      * @since csc_080904_1
      */
     public static String getDateStr(Date date) {
@@ -69,48 +44,39 @@ public class DateUtil {
     }
 
     /**
-     * Easily format a date (SHORT). SHORT is completely numeric, such as 12.13.52 or 3:30pm
-     * @since csc_080904_1
+     * Easily format a date in short form. M/d/yy
      */
-    public static synchronized String getShortDateStr(Date date) {
-        if (date == null)
-            return null;
-        return dfShort.format(date);
+    public static String getShortDateStr(Date date) {
+        if (date == null) return null;
+        return new SimpleDateFormat("M/d/yy").format(date);
     }
 
     /**
-     * Easily format a date (MEDIUM). MEDIUM is longer, such as Jan 12, 1952
-     * @since csc_080904_1
+     * Easily format a date (MMM d, yyyy) such as Jan 12, 1952
      */
-    public static synchronized String getMedDateStr(Date date) {
-        if (date == null)
-            return null;
-        return dfMedium.format(date);
+    public static String getMedDateStr(Date date) {
+        if (date == null) return null;
+        return new SimpleDateFormat("MMM d, yyyy").format(date);
     }
 
     /**
-     * Easily format a date (LONG). LONG is longer, such as January 12, 1952 or 3:30:32pm
-     * @since csc_080904_1
+     * Easily format a date (MMMM d, yyyy). such as January 12, 1952 or 3:30:32pm
      */
-    public static synchronized String getLongDateStr(Date date) {
-        if (date == null)
-            return null;
-        return dfLong.format(date);
+    public static String getLongDateStr(Date date) {
+        if (date == null) return null;
+        return new SimpleDateFormat("MMMM d, yyyy").format(date);
     }
 
     /**
-     * Easily format a date (FULL). FULL is pretty completely specified, such as Tuesday, April 12, 1952 AD or 3:30:42pm PST.
-     * @since csc_080904_1
+     * Easily format a date (EEEE, MMMM d, yyyy). such as Tuesday, April 12, 1952.
      */
-    public static synchronized String getFullDateStr(Date date) {
-        if (date == null)
-            return null;
-        return dfFull.format(date);
+    public static String getFullDateStr(Date date) {
+        if (date == null) return null;
+        return new SimpleDateFormat("EEEE, MMMM d, yyyy").format(date);
     }
 
     /**
-     * Easily format the current time as a timestamp (default)
-     * @since csc_080904_1
+     * Easily format the current time as a timestamp
      */
     public static String getTimestampStr() {
         return getTimestampStr(System.currentTimeMillis());
@@ -118,20 +84,17 @@ public class DateUtil {
 
     /**
      * Easily format a millis value as a timestamp (default)
-     * @since csc_080904_1
      */
     public static String getTimestampStr(long millis) {
         return getTimestampStr(new Date(millis));
     }
 
     /**
-     * Easily format a date as a timestamp (SHORT date, MEDIUM time)
-     * @since csc_080904_1
+     * Easily format a date as a timestamp (M/d/yy h:mm:ss a)
      */
-    public static synchronized String getTimestampStr(Date timestamp) {
-        if (timestamp == null)
-            return null;
-        return dfTimestamp.format(timestamp);
+    public static String getTimestampStr(Date timestamp) {
+        if (timestamp == null) return null;
+        return new SimpleDateFormat("M/d/yy h:mm:ss a").format(timestamp);
     }
 
     /**
@@ -151,13 +114,11 @@ public class DateUtil {
     }
 
     /**
-     * Easily format a date as a time string (MEDIUM time)
-     * @since csc_080904_1
+     * Easily format a date as a time string (h:mm:ss a)
      */
-    public static synchronized String getTimeStr(Date time) {
-        if (time == null)
-            return null;
-        return dfTime.format(time);
+    public static String getTimeStr(Date time) {
+        if (time == null) return null;
+        return new SimpleDateFormat("h:mm:ss a").format(time);
     }
 
     /**
@@ -177,12 +138,11 @@ public class DateUtil {
     }
 
     /**
-     * Easily format a date as a short time string (SHORT time)
+     * Easily format a date as a short time string (h:mm a)
      */
-    public static synchronized String getShortTimeStr(Date time) {
-        if (time == null)
-            return null;
-        return dfShortTime.format(time);
+    public static String getShortTimeStr(Date time) {
+        if (time == null) return null;
+        return new SimpleDateFormat("h:mm a").format(time);
     }
 
     /**
@@ -272,9 +232,7 @@ public class DateUtil {
         return diff;
     }
 
-    //===========================================================================
-    // HELPER METHODS
-    //===========================================================================
+
     public static Calendar getFirstDateToday() {
         return DateUtil.getFirstDate(0);
     }
@@ -315,16 +273,8 @@ public class DateUtil {
         return date;
     }
 
-    //===========================================================================
-    // DATA MEMBERS
-    //===========================================================================
-    //===========================================================================
-    // STATIC DATA MEMBERS
-    //===========================================================================
-    // setup the constant for number of seconds in a day
     public static final long SECONDS_IN_DAY = 24 * 60 * 60;
 
-    // setup the constant for number of milliseconds in a day
     public static final long MILLISECONDS_IN_DAY = SECONDS_IN_DAY * 1000;
 
 }

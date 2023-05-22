@@ -21,10 +21,64 @@ package org.barracudamvc.plankton;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 public class DateUtilTest {
+
+    @Test
+    public void testGetShortDateStr() throws ParseException {
+        assertThat(DateUtil.getShortDateStr(date("2023-12-25 16:32:11")), is("12/25/23"));
+        assertThat(DateUtil.getShortDateStr(date("2023-01-01 16:32:11")), is("1/1/23"));
+    }
+
+    @Test
+    public void testGetMedDateStr() throws ParseException {
+        assertThat(DateUtil.getMedDateStr(date("2023-12-25 16:32:11")), is("Dec 25, 2023"));
+        assertThat(DateUtil.getMedDateStr(date("2023-01-01 16:32:11")), is("Jan 1, 2023"));
+    }
+
+    @Test
+    public void testGetLongDateStr() throws ParseException {
+        assertThat(DateUtil.getLongDateStr(date("2023-12-25 16:32:11")), is("December 25, 2023"));
+        assertThat(DateUtil.getLongDateStr(date("2023-01-01 16:32:11")), is("January 1, 2023"));
+    }
+    @Test
+    public void testGetFullDateStr() throws ParseException {
+        assertThat(DateUtil.getFullDateStr(date("2023-12-25 16:32:11")), is("Monday, December 25, 2023"));
+        assertThat(DateUtil.getFullDateStr(date("2023-01-01 16:32:11")), is("Sunday, January 1, 2023"));
+    }
+
+    @Test
+    public void testGetTimestampStr() throws ParseException {
+        assertThat(DateUtil.getTimestampStr(date("2023-12-25 16:32:11")), is("12/25/23 4:32:11 PM"));
+        assertThat(DateUtil.getTimestampStr(date("2023-01-01 16:32:11")), is("1/1/23 4:32:11 PM"));
+        assertThat(DateUtil.getTimestampStr(date("2023-01-01 01:02:01")), is("1/1/23 1:02:01 AM"));
+    }
+
+    @Test
+    public void testGetTimeStr() throws ParseException {
+        assertThat(DateUtil.getTimeStr(date("2023-12-25 16:32:11")), is("4:32:11 PM"));
+        assertThat(DateUtil.getTimeStr(date("2023-12-25 23:55:11")), is("11:55:11 PM"));
+        assertThat(DateUtil.getTimeStr(date("2023-01-01 01:02:01")), is("1:02:01 AM"));
+        assertThat(DateUtil.getTimeStr(date("2023-01-01 00:00:00")), is("12:00:00 AM"));
+    }
+
+    @Test
+    public void testGetShortTimeStr() throws ParseException {
+        assertThat(DateUtil.getShortTimeStr(date("2023-12-25 16:32:11")), is("4:32 PM"));
+        assertThat(DateUtil.getShortTimeStr(date("2023-12-25 23:55:11")), is("11:55 PM"));
+        assertThat(DateUtil.getShortTimeStr(date("2023-01-01 01:02:01")), is("1:02 AM"));
+        assertThat(DateUtil.getShortTimeStr(date("2023-01-01 00:00:00")), is("12:00 AM"));
+    }
+
+    private static Date date(String source) throws ParseException {
+        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(source);
+    }
 
     @Test
     public void testDateDiff() throws ParseException {
