@@ -16,10 +16,7 @@ import org.barracudamvc.core.comp.UnsupportedFormatException;
 import org.enhydra.xml.xmlc.dom.XMLCDomFactory;
 import org.enhydra.xml.xmlc.dom.XMLCDomFactoryCache;
 import org.enhydra.xml.xmlc.dom.xerces.XercesHTMLDomFactory;
-import static org.hamcrest.core.Is.is;
 import org.hamcrest.core.IsInstanceOf;
-import org.junit.Assert;
-import static org.junit.Assert.assertThat;
 import org.junit.Before;
 import org.junit.Test;
 import org.w3c.dom.DOMException;
@@ -27,6 +24,9 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.Text;
 import org.w3c.dom.html.HTMLLabelElement;
+
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
 
 /**
  *
@@ -41,7 +41,12 @@ public class HTMLLabelRendererTest {
     @Before
     public void setup() {
         XMLCDomFactory factory = XMLCDomFactoryCache.getFactory(XercesHTMLDomFactory.class);
-        document = factory.createDocument(null, "HTML", null);
+        try {
+            document = factory.createDocument(null, "HTML", null);
+        } catch(Throwable e){
+            System.out.println("Hello there");
+            e.printStackTrace();
+        }
 
         viewContext = new DefaultViewContext();
         view = new DefaultView();

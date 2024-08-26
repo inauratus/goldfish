@@ -6,12 +6,14 @@
  */
 package org.barracudamvc.plankton.http;
 
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileItemHeaders;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
-import org.apache.commons.fileupload.FileItem;
 
 public class DummyFileItem implements FileItem {
 
@@ -90,4 +92,11 @@ public class DummyFileItem implements FileItem {
         throw new UnsupportedOperationException();
     }
 
+    public FileItemHeaders getHeaders() {
+        throw new UnsupportedOperationException();
+    }
+
+    public void setHeaders(FileItemHeaders fileItemHeaders) {
+        throw new UnsupportedOperationException();
+    }
 }
