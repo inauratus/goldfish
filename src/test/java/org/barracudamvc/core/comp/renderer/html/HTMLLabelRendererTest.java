@@ -41,12 +41,7 @@ public class HTMLLabelRendererTest {
     @Before
     public void setup() {
         XMLCDomFactory factory = XMLCDomFactoryCache.getFactory(XercesHTMLDomFactory.class);
-        try {
-            document = factory.createDocument(null, "HTML", null);
-        } catch(Throwable e){
-            System.out.println("Hello there");
-            e.printStackTrace();
-        }
+        document = factory.createDocument(null, "HTML", null);
 
         viewContext = new DefaultViewContext();
         view = new DefaultView();
