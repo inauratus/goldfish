@@ -26,7 +26,6 @@ dependencies {
     implementation group: 'org.apache.logging.log4j', name: 'log4j-1.2-api', version: '2.17.1'
     implementation group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.17.1'
     implementation group: 'javax.servlet', name: 'javax.servlet-api', version: '3.0.1'
-    implementation group: 'xerces', name: 'xerces', version: '2.4.0'
     implementation group: 'xerces', name: 'xercesImpl', version: '2.12.2'
     implementation group: 'commons-fileupload', name: 'commons-fileupload', version: '1.5'
     implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.13'
