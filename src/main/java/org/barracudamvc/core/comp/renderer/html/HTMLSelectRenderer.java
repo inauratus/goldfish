@@ -30,6 +30,7 @@ import org.barracudamvc.core.comp.RenderException;
 import org.barracudamvc.core.comp.UnsupportedFormatException;
 import org.barracudamvc.core.comp.View;
 import org.barracudamvc.core.comp.ViewContext;
+import org.barracudamvc.plankton.StringUtil;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.html.HTMLCollection;
@@ -129,9 +130,9 @@ public class HTMLSelectRenderer extends HTMLListRenderer {
                 Object item = lm.getItemAt(i);
                 if (item==null) continue;
                 if (item instanceof ItemMap) {
-                    opt.setValue(((ItemMap) item).getKey().toString());
+                    opt.setValue(StringUtil.sanitize(((ItemMap) item).getKey().toString()));
                 } else {
-                    opt.setValue(item.toString());
+                    opt.setValue(StringUtil.sanitize(item.toString()));
                 }
             }
             

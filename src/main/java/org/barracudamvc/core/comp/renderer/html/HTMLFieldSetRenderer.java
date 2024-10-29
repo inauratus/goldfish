@@ -29,6 +29,7 @@ import org.barracudamvc.core.comp.RenderException;
 import org.barracudamvc.core.comp.UnsupportedFormatException;
 import org.barracudamvc.core.comp.View;
 import org.barracudamvc.core.comp.ViewContext;
+import org.barracudamvc.plankton.StringUtil;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.html.HTMLFieldSetElement;
@@ -79,7 +80,7 @@ public class HTMLFieldSetRenderer extends HTMLComponentRenderer {
             	Node legendNode = vc.getDocument().createElement("LEGEND");
             	// TODO s'insérer dans une 'legend' existante
             	node.insertBefore(legendNode, node.getFirstChild());
-            	legendNode.setTextContent(legend);
+                legendNode.setTextContent(StringUtil.sanitize(legend));
             }
             
         } else {

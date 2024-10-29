@@ -27,6 +27,7 @@ import org.barracudamvc.core.comp.RenderException;
 import org.barracudamvc.core.comp.UnsupportedFormatException;
 import org.barracudamvc.core.comp.View;
 import org.barracudamvc.core.comp.ViewContext;
+import org.barracudamvc.plankton.StringUtil;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.html.HTMLTextAreaElement;
@@ -86,7 +87,7 @@ public class HTMLTextAreaRenderer extends HTMLComponentRenderer {
 
             //set the value (if specified)
             String value = btacomp.getValue();
-            if (value!=null) el.setTextContent(value);
+            if (value!=null) el.setTextContent(StringUtil.sanitize(value));
 
             int rows = btextArea.getRows();
             if (rows>0) el.setRows(rows);

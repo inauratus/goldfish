@@ -21,15 +21,15 @@
 
 package org.barracudamvc.core.comp.renderer.html;
 
+import org.apache.log4j.Logger;
 import org.barracudamvc.core.comp.BComponent;
+import org.barracudamvc.core.comp.BImage;
 import org.barracudamvc.core.comp.NoSuitableRendererException;
 import org.barracudamvc.core.comp.RenderException;
 import org.barracudamvc.core.comp.UnsupportedFormatException;
 import org.barracudamvc.core.comp.View;
 import org.barracudamvc.core.comp.ViewContext;
-import org.barracudamvc.core.comp.renderer.html.HTMLComponentRenderer;
-import org.barracudamvc.core.comp.BImage;
-import org.apache.log4j.Logger;
+import org.barracudamvc.plankton.StringUtil;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.html.HTMLImageElement;
@@ -69,9 +69,9 @@ public class HTMLImageRenderer extends HTMLComponentRenderer {
         super.renderComponent(comp, view, vc);
 
         BImage bimage = (BImage) comp;
-        String alt = bimage.getAlt();
-        String title = bimage.getTitle();
-        String src = bimage.getSrc();
+        String alt = StringUtil.sanitize(bimage.getAlt());
+        String title = StringUtil.sanitize(bimage.getTitle());
+        String src = StringUtil.sanitize(bimage.getSrc());
         String height = bimage.getHeight();
         String width = bimage.getWidth();
         

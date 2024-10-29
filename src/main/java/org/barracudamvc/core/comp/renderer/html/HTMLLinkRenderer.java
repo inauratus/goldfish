@@ -19,12 +19,33 @@
  */
 package org.barracudamvc.core.comp.renderer.html;
 
-import java.util.*;
-
 import org.apache.log4j.Logger;
-import org.barracudamvc.core.comp.*;
-import org.w3c.dom.*;
-import org.w3c.dom.html.*;
+import org.barracudamvc.core.comp.BComponent;
+import org.barracudamvc.core.comp.BLink;
+import org.barracudamvc.core.comp.BText;
+import org.barracudamvc.core.comp.DefaultView;
+import org.barracudamvc.core.comp.InvalidNodeException;
+import org.barracudamvc.core.comp.NoSuitableRendererException;
+import org.barracudamvc.core.comp.RenderException;
+import org.barracudamvc.core.comp.TemplateDirective;
+import org.barracudamvc.core.comp.UnsupportedFormatException;
+import org.barracudamvc.core.comp.View;
+import org.barracudamvc.core.comp.ViewContext;
+import org.barracudamvc.plankton.StringUtil;
+import org.w3c.dom.Attr;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.w3c.dom.html.HTMLAnchorElement;
+import org.w3c.dom.html.HTMLButtonElement;
+import org.w3c.dom.html.HTMLDListElement;
+import org.w3c.dom.html.HTMLInputElement;
+import org.w3c.dom.html.HTMLOListElement;
+import org.w3c.dom.html.HTMLTableRowElement;
+import org.w3c.dom.html.HTMLUListElement;
+
+import java.util.StringTokenizer;
 
 
 /**
@@ -141,7 +162,7 @@ public class HTMLLinkRenderer extends HTMLActionRenderer {
             if (logger.isInfoEnabled()) logger.info("Rendering based on HTMLAnchorElement interface...");
             //set the "target" attribute, if it exists
             String target = linkComp.getTarget();
-            if (target!=null) ((HTMLAnchorElement) node).setTarget(target);
+            if (target!=null) ((HTMLAnchorElement) node).setTarget(StringUtil.sanitize(target));
             supportedElement = true;
         } else if (node instanceof HTMLButtonElement) {
             if (logger.isInfoEnabled()) logger.info("Rendering based on HTMLButtonElement interface...");

@@ -22,13 +22,22 @@
 package org.barracudamvc.core.forms;
 
 // java imports:
-import java.io.Serializable;
-import java.util.*;
 
-// 3rd-party imports:
-import org.apache.log4j.*;
-import org.barracudamvc.core.comp.*;
-import org.barracudamvc.plankton.data.*;
+import org.apache.log4j.Logger;
+import org.barracudamvc.core.comp.BComponent;
+import org.barracudamvc.core.comp.ExtendedComponent;
+import org.barracudamvc.plankton.StringUtil;
+import org.barracudamvc.plankton.data.ObjectRepository;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.IdentityHashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * This class is used to collate all the nested exceptions on a form into something that can 
@@ -337,7 +346,7 @@ public class ErrorManager implements Serializable {
                 } else {
                     descr = (String) error;
                 }
-                component.setAttr("title", descr);
+                component.setAttr("title", StringUtil.sanitize(descr));
                 // fro_070907_2_start
             }
             // fro_070907_2_end

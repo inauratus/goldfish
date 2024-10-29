@@ -27,6 +27,7 @@ import org.barracudamvc.core.comp.RenderException;
 import org.barracudamvc.core.comp.UnsupportedFormatException;
 import org.barracudamvc.core.comp.View;
 import org.barracudamvc.core.comp.ViewContext;
+import org.barracudamvc.plankton.StringUtil;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.html.HTMLInputElement;
@@ -87,7 +88,7 @@ public class HTMLInputRenderer extends HTMLComponentRenderer {
 
             //set the value (if specified)
             String value = bicomp.getValue();
-            if (value!=null) el.setValue(value);
+            if (value!=null) el.setValue(StringUtil.sanitize(value));
             
         } else {
             String errmsg = "Node does not implement HTMLInputElement and cannot be rendered: "+node;

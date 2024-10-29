@@ -27,6 +27,7 @@ import org.barracudamvc.core.comp.RenderException;
 import org.barracudamvc.core.comp.UnsupportedFormatException;
 import org.barracudamvc.core.comp.View;
 import org.barracudamvc.core.comp.ViewContext;
+import org.barracudamvc.plankton.StringUtil;
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -57,7 +58,7 @@ public class HTMLLabelRenderer extends HTMLComponentRenderer {
     }
 
     private static void merge(final HTMLLabelElement source, final BLabel label) throws DOMException {
-        final Node newNode = source.getOwnerDocument().createTextNode(label.getText());
+        final Node newNode = source.getOwnerDocument().createTextNode(StringUtil.sanitize(label.getText()));
         final Node firstChild = source.getFirstChild();
         if (firstChild instanceof Text) {
             source.replaceChild(newNode, firstChild);

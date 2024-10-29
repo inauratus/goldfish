@@ -29,6 +29,7 @@ import org.barracudamvc.core.comp.RenderException;
 import org.barracudamvc.core.comp.UnsupportedFormatException;
 import org.barracudamvc.core.comp.View;
 import org.barracudamvc.core.comp.ViewContext;
+import org.barracudamvc.plankton.StringUtil;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -49,7 +50,7 @@ public class HTMLInlineRenderer extends HTMLComponentRenderer {
         //defaultNode = doc.createElement("SPAN");
         
         if ((comp instanceof BInline) && ((BInline)comp).getContent() != null) {
-        	elm.setTextContent(((BInline)comp).getContent());
+            elm.setTextContent(StringUtil.sanitize(((BInline) comp).getContent()));
         }
         if ((comp instanceof BInline) && ((BInline)comp).getAttrMap() != null && ((BInline)comp).getAttrMap().containsKey("class")) {
         	elm.setAttribute("class", (String) ((BInline)comp).getAttr("class"));

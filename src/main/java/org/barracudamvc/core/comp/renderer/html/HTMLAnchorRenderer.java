@@ -31,6 +31,7 @@ import org.barracudamvc.core.comp.RenderException;
 import org.barracudamvc.core.comp.UnsupportedFormatException;
 import org.barracudamvc.core.comp.View;
 import org.barracudamvc.core.comp.ViewContext;
+import org.barracudamvc.plankton.StringUtil;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.html.HTMLAnchorElement;
@@ -78,12 +79,12 @@ public class HTMLAnchorRenderer extends HTMLComponentRenderer {
 
             //set the href (if specified)
             String href = aComp.getHref();
-            if (href!=null) el.setHref(href);
+            if (href != null) el.setHref(StringUtil.sanitize(href));
             
             //set the target (if specified)
             String target = aComp.getTarget();
             if (target != null) {
-            	el.setTarget(target);
+            	el.setTarget(StringUtil.sanitize(target));
             }
 
             String text = aComp.getText();

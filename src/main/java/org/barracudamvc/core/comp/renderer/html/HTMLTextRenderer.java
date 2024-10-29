@@ -28,6 +28,7 @@ import org.barracudamvc.core.comp.View;
 import org.barracudamvc.core.comp.ViewContext;
 import org.barracudamvc.core.util.dom.DOMUtil;
 import org.barracudamvc.plankton.Classes;
+import org.barracudamvc.plankton.StringUtil;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.html.HTMLAreaElement;
@@ -78,7 +79,7 @@ public class HTMLTextRenderer extends HTMLComponentRenderer {
         if (node instanceof HTMLDocument) {
             //..HTMLDocument - set the "title" attribute
             if (logger.isInfoEnabled()) logger.info("Rendering based on HTMLDocument interface...");
-            ((HTMLDocument) node).setTitle(text);
+            ((HTMLDocument) node).setTitle(StringUtil.sanitize(text));
     
         //HTMLElement Interface
         //---------------------
@@ -94,28 +95,34 @@ public class HTMLTextRenderer extends HTMLComponentRenderer {
             //..HTMLAreaElement - set the "alt" attribute
             if (node instanceof HTMLAreaElement) {
                 if (logger.isInfoEnabled()) logger.info("Rendering based on HTMLAreaElement interface...");
-                ((HTMLAreaElement) node).setAlt(text);
+                ((HTMLAreaElement) node).setAlt(StringUtil.sanitize(text));
 
             //..HTMLImageElement - set the "alt" attribute
             } else if (node instanceof HTMLImageElement) {
                 if (logger.isInfoEnabled()) logger.info("Rendering based on HTMLImageElement interface...");
-                ((HTMLImageElement) node).setAlt(text);
+                ((HTMLImageElement) node).setAlt(StringUtil.sanitize(text));
 
             //..HTMLInputElement - set the "value" attribute
             } else if (node instanceof HTMLInputElement) {
                 if (logger.isInfoEnabled()) logger.info("Rendering based on HTMLInputElement interface...");
-                ((HTMLInputElement) node).setValue(text);
+                ((HTMLInputElement) node).setValue(StringUtil.sanitize(text));
             
             //..HTMLTitleElement - set the "text" attribute
             } else if (node instanceof HTMLTitleElement) {
                 if (logger.isInfoEnabled()) logger.info("Rendering based on HTMLTitleElement interface...");
-                ((HTMLTitleElement) node).setText(text);
+                ((HTMLTitleElement) node).setText(StringUtil.sanitize(text));
             
             //..For everything else - get the first Text child and set 
             //....value if it exists
-            } else {  
-                if (logger.isInfoEnabled()) logger.info("Rendering based on "+Classes.getShortClassName(node.getClass())+" interface in first child Text element...");
-                DOMUtil.setTextInNode((Element) node, text, btext.allowMarkupInText(), btext.insertBefore()); // fro_112207
+            } else {
+                if (logger.isInfoEnabled())
+                    logger.info("Rendering based on " + Classes.getShortClassName(node.getClass()) + " interface in first child Text element...");
+                DOMUtil.setTextInNode(
+                        (Element) node,
+                        btext.allowMarkupInText() ? text : StringUtil.sanitize(text),
+                        btext.allowMarkupInText(),
+                        btext.insertBefore()
+                ); // fro_112207
             }
         } else {
             String errmsg = "Node does not implement HTMLElement or HTMLDocument and cannot be rendered: "+node;

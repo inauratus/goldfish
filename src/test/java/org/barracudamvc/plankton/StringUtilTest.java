@@ -19,8 +19,12 @@
  */
 package org.barracudamvc.plankton;
 
-import static org.junit.Assert.assertTrue;
 import org.junit.Test;
+
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.nullValue;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Test the StringUtil class
@@ -49,4 +53,15 @@ public class StringUtilTest {
         String actualResult = StringUtil.replace(sourceStr, oldPattern, newPattern);
         assertTrue("Replace err on source:'" + sourceStr + "' ('" + oldPattern + "'-->'" + newPattern + "') got:'" + actualResult + "' expected:'" + expectedResult + "'", actualResult == expectedResult || (actualResult != null && actualResult.equals(expectedResult)));
     }
+
+    @Test
+    public void sanitizeRemovesScript() {
+        assertThat(StringUtil.sanitize(null), nullValue());
+        assertThat(StringUtil.sanitize(""), is(""));
+        assertThat(StringUtil.sanitize("<SCRIPT>alert('hello world')</SCRIPT>"), is("alert('hello world')"));
+        assertThat(StringUtil.sanitize("<script>alert('hello world')</script>"), is("alert('hello world')"));
+        assertThat(StringUtil.sanitize("<div><script>alert('hello world')</script></div>"), is("<div>alert('hello world')</div>"));
+    }
+
+
 }

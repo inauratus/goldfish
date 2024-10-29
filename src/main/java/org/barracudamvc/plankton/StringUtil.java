@@ -19,9 +19,9 @@
  */
 package org.barracudamvc.plankton;
 
-import java.util.Calendar;
-
 import org.apache.log4j.Logger;
+
+import java.util.Calendar;
 
 /**
  * Simple utility functions that work on Strings
@@ -31,6 +31,7 @@ public class StringUtil {
 
     //public constants
     protected static final Logger logger = Logger.getLogger(StringUtil.class.getName());
+    public static final String XSS_SCRIPT_CLEAN_REGEX = "<[\\s\\\\]*/?[\\s]*[sS][cC][rR][iI][pP][tT][^>]*>";
 
     /**
      * Replace all occurences of a pattern in a String with a new pattern
@@ -133,7 +134,13 @@ public class StringUtil {
         return " {"+s+"}";
     }
 
-    
+    public static String sanitize(String str) {
+        if (str == null) {
+            return null;
+        }
+        return str.replaceAll(XSS_SCRIPT_CLEAN_REGEX, "");
+    }
+
     public static String trim(String val) {
         if (val == null)
             return null;

@@ -3,7 +3,6 @@ package org.barracudamvc.taskdefs;
 import org.apache.tools.ant.Project;
 import org.apache.tools.ant.Target;
 import org.apache.tools.ant.Task;
-import org.apache.tools.ant.taskdefs.Copy;
 import org.hamcrest.Matcher;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 public class CopyAndReplaceTest {
     CopyAndReplace copyAndReplace;
@@ -41,7 +40,7 @@ public class CopyAndReplaceTest {
         targetFile = getTestFile("CopyAndReplace_nonEmptyFile.txt");
         assertThat(byteToString(copyAndReplace.readFileToByteArray(targetFile)),
                 matches(
-                        "this is not empty\n" +
+                        "this is not empty\r\n" +
                                 ":)"
                 ));
     }
