@@ -40,7 +40,7 @@ public class CopyAndReplaceTest {
         targetFile = getTestFile("CopyAndReplace_nonEmptyFile.txt");
         assertThat(byteToString(copyAndReplace.readFileToByteArray(targetFile)),
                 matches(
-                        "this is not empty\r\n" +
+                        "this is not empty\n" +
                                 ":)"
                 ));
     }
