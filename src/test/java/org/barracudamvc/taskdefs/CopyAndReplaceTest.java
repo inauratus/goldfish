@@ -32,7 +32,7 @@ public class CopyAndReplaceTest {
     @Test
     public void givenTargetFileWithNoInclude_expectEmptyByteArray() throws URISyntaxException {
         targetFile = getTestFile("CopyAndReplace_emptyInclude.txt");
-        assertThat(copyAndReplace.replaceIncludeTags(targetFile, fromDirectory, parentFiles), matches(""));
+        assertThat(getReplaceIncludeTags(), matches(""));
     }
 
     @Test
@@ -48,22 +48,21 @@ public class CopyAndReplaceTest {
     @Test
     public void givenTargetFileWithSingleIncludeForEmptySSI_expectIncludeReplacedByEmptyString() throws URISyntaxException {
         targetFile = getTestFile("CopyAndReplace_emptyIncludeSSI.txt");
-        assertThat(copyAndReplace.replaceIncludeTags(targetFile, fromDirectory, parentFiles), matches(""));
+        assertThat(getReplaceIncludeTags(), matches(""));
 
     }
 
     @Test
     public void givenTargetFileWithSingleIncludeForNonEmptyTextSSI_expectIncludeReplacedBySSIContent() throws URISyntaxException {
         targetFile = getTestFile("CopyAndReplace_nonEmptyIncludeSSI.txt");
-        assertThat(copyAndReplace.replaceIncludeTags(targetFile, fromDirectory, parentFiles),
-                matches("\n    I contain text\n"));
+        assertThat(getReplaceIncludeTags(), matches("\n    I contain text\n"));
 
     }
 
     @Test
     public void givenTargetFileWithSingleIncludeForNonEmptySSI_expectIncludeReplacedBySSI() throws URISyntaxException {
         targetFile = getTestFile("CopyAndReplace_emptySSIInclude.txt");
-        assertThat(copyAndReplace.replaceIncludeTags(targetFile, fromDirectory, parentFiles), matches(
+        assertThat(getReplaceIncludeTags(), matches(
                 "<!-- start CR_nonEmptySSI.ssi -->\n" +
                         "    I contain text\n" +
                         "<!-- end CR_nonEmptySSI.ssi -->")
@@ -74,7 +73,7 @@ public class CopyAndReplaceTest {
     @Test
     public void givenTargetFileWithSingleIncludeForTwoEmptySSIs_expectIncludeTagsReplacedByTwoSSIs() throws URISyntaxException {
         targetFile = getTestFile("CopyAndReplace_twoEmptySSI.txt");
-        assertThat(copyAndReplace.replaceIncludeTags(targetFile, fromDirectory, parentFiles), matches(
+        assertThat(getReplaceIncludeTags(), matches(
                 "<!-- start CR_firstEmptySSI.ssi -->\n" +
                         "<!-- end CR_firstEmptySSI.ssi -->\n" +
                         "\n" +
@@ -85,7 +84,7 @@ public class CopyAndReplaceTest {
     @Test
     public void givenTargetFileWithTwoIncludesForEmptySSI_expectEachIncludeReplacedByEmptySSI() throws URISyntaxException {
         targetFile = getTestFile("CopyAndReplace_twoInclude.txt");
-        assertThat(copyAndReplace.replaceIncludeTags(targetFile, fromDirectory, parentFiles), matches(
+        assertThat(getReplaceIncludeTags(), matches(
                 "<!-- start CR_nonEmptySSI.ssi -->\n" +
                         "    I contain text\n" +
                         "<!-- end CR_nonEmptySSI.ssi -->\n" +
@@ -95,7 +94,7 @@ public class CopyAndReplaceTest {
     @Test
     public void givenTargetFileWithSingleIncludeForSingleSSIWithInclude_expectIncludeReplacedBySSIAndSSIContentsOfSecondInclude() throws URISyntaxException {
         targetFile = getTestFile("CopyAndReplace_singleIncludeSSI.txt");
-        assertThat(copyAndReplace.replaceIncludeTags(targetFile, fromDirectory, parentFiles),
+        assertThat(getReplaceIncludeTags(),
                 matches(
                         "<!-- start CR_SSI.ssi -->\n" +
                                 "In SSI\n" +
@@ -107,11 +106,15 @@ public class CopyAndReplaceTest {
     @Test
     public void givenTargetFileWithCyclicalInclude_expectErrorMessageByteArray() throws URISyntaxException {
         targetFile = getTestFile("CopyAndReplace_cyclicalIncludeSSI.txt");
-        assertThat(copyAndReplace.replaceIncludeTags(targetFile, fromDirectory, parentFiles), matches("<!-- Encountered circular include. File was not included -->"));
+        assertThat(getReplaceIncludeTags(), matches("<!-- Encountered circular include. File was not included -->"));
+    }
+
+    private String getReplaceIncludeTags() {
+        return copyAndReplace.replaceIncludeTags(targetFile, fromDirectory, parentFiles).replace("\r","" );
     }
 
     private String byteToString(byte[] data) {
-        return new String(data);
+        return new String(data).replace("\r", "");
     }
 
     private File getTestFile(String fileName) throws URISyntaxException {

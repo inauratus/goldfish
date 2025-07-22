@@ -164,6 +164,10 @@ public class DefaultEventContext extends StateMapContainer implements ViewEventC
      */
     @Override
     public void persistContext(ClientSideRedirectException re) {
+        if (re.isPreventPersistContext()) {
+            return;
+        }
+
         if (logger.isInfoEnabled()) {
             logger.info("persisting event context");
         }
