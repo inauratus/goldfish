@@ -1,18 +1,19 @@
 package org.barracudamvc.plankton.io.parser.json.lexer;
 
-import java.io.PushbackInputStream;
+import java.io.PushbackReader;
+
 import static org.barracudamvc.plankton.io.parser.json.lexer.StaticHelpers.readChar;
 
 class StringLexer {
 
-    PushbackInputStream stream;
+    PushbackReader stream;
     CharBuffer buffer;
     char[] unicodeCharacterbuffer = new char[]{'\\', 'u', '\0', '\0', '\0', '\0'};
 
     int position;
     int line;
 
-    public StringLexer(PushbackInputStream stream) {
+    public StringLexer(PushbackReader stream) {
         this.stream = stream;
         this.buffer = new CharBuffer();
     }

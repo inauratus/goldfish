@@ -1,18 +1,17 @@
 package org.barracudamvc.plankton.io.parser.json.lexer;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.PushbackInputStream;
+import java.io.PushbackReader;
 
 class StaticHelpers {
 
-    static char readChar(InputStream stream) {
+    static char readChar(PushbackReader stream) {
         int raw = read(stream);
         checkNotEndOfStream(raw);
         return (char) raw;
     }
 
-    static int read(InputStream stream) {
+    static int read(PushbackReader stream) {
         try {
             return stream.read();
         } catch (IOException io) {
@@ -26,11 +25,4 @@ class StaticHelpers {
         }
     }
 
-    static void uncheckPushBack(PushbackInputStream stream, int raw) {
-        try {
-            stream.unread(raw);
-        } catch (IOException ioe) {
-            throw new IllegalStateException(ioe);
-        }
-    }
 }

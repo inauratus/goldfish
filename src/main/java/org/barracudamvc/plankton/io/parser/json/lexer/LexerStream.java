@@ -2,14 +2,17 @@ package org.barracudamvc.plankton.io.parser.json.lexer;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.PushbackInputStream;
+import java.io.InputStreamReader;
+import java.io.PushbackReader;
+import java.nio.charset.StandardCharsets;
+
 import static org.barracudamvc.plankton.io.parser.json.lexer.StaticHelpers.read;
 import static org.barracudamvc.plankton.io.parser.json.lexer.StaticHelpers.readChar;
 
 
 public class LexerStream {
 
-    PushbackInputStream stream;
+    PushbackReader stream;
     int position = 0;
     int line = 1;
     char rawCharacter;
@@ -21,7 +24,7 @@ public class LexerStream {
     NumberLexer numberLexer;
 
     public LexerStream(InputStream stream) {
-        this.stream = new PushbackInputStream(stream, 1);
+        this.stream = new PushbackReader(new InputStreamReader(stream, StandardCharsets.UTF_8), 1);
         buffer = new CharBuffer();
         stringLexer = new StringLexer(this.stream);
         numberLexer = new NumberLexer(this.stream);
@@ -60,8 +63,8 @@ public class LexerStream {
     private void uncheckPushBack(int raw) {
         try {
             stream.unread(raw);
-        } catch (IOException ioe) {
-            throw new IllegalStateException(ioe);
+        } catch (IOException io) {
+            throw new IllegalStateException(io);
         }
     }
 

@@ -1,18 +1,16 @@
 package org.barracudamvc.plankton.io.parser.json.lexer;
 
 import java.io.IOException;
-import java.io.PushbackInputStream;
+import java.io.PushbackReader;
+
 import static org.barracudamvc.plankton.io.parser.json.lexer.StaticHelpers.read;
 
 class NumberLexer {
 
-    PushbackInputStream stream;
+    PushbackReader stream;
     CharBuffer buffer;
 
-    int position;
-    int line;
-
-    NumberLexer(PushbackInputStream stream) {
+    NumberLexer(PushbackReader stream) {
         this.stream = stream;
         buffer = new CharBuffer();
     }

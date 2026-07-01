@@ -13,12 +13,13 @@ import static org.junit.Assert.assertThat;
 import org.junit.Before;
 import org.junit.Test;
 
+@SuppressWarnings("unchecked")
 public class JSONParserTest {
 
     JSONParser parser;
 
     @Test(expected = Exception.class)
-    public void givenIllegalFirstCharacter_expectExpection() {
+    public void givenIllegalFirstCharacter_expectException() {
         parse("abcd");
     }
 
@@ -66,17 +67,6 @@ public class JSONParserTest {
         List list = (List) result;
         assertThat(list.size(), is(1));
     }
-    
-//        @Test
-//    public void test_given_map_of_array() {
-//        Object result = parse("{\"a\" : [1,2,3]  }");
-//
-//        assertThat(result, instanceOf(Map.class));
-//        Map list = (Map) result;
-//        assertThat((List)list.get("a"), Matchers.contains(1,2,3));
-//    }
-//
-//
 
     @Test
     public void givenArrayWithNull_expectAListContainingNull() {
@@ -95,6 +85,17 @@ public class JSONParserTest {
         assertThat(result, instanceOf(List.class));
         List list = (List) result;
         assertThat(list.size(), is(3));
+    }
+
+    @Test
+    public void givenAnUTFCharacterStrings_expectAListOfStrings() {
+        Object result = parse("[\"\u2022\", \"b\", \"c\"]");
+        ArrayList<String> list = new ArrayList<>();
+        list.add("\u2022");
+        list.add("b");
+        list.add("c");
+        assertThat(result, instanceOf(List.class));
+        assertThat(result, is(list));
     }
 
     @Test(expected = Exception.class)
