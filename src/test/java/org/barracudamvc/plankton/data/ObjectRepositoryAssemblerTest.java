@@ -19,10 +19,11 @@
  */
 package org.barracudamvc.plankton.data;
 
-import java.io.InputStream;
-
-import org.hamcrest.core.IsNull;
 import org.junit.Test;
+
+import java.io.InputStream;
+import java.util.HashMap;
+
 import static org.junit.Assert.*;
 
 public class ObjectRepositoryAssemblerTest {
@@ -39,8 +40,10 @@ public class ObjectRepositoryAssemblerTest {
     public void testAssembler() {
         InputStream file = this.getClass().getResourceAsStream("object-repository-tests.xml");
 
+        HashMap<String, String> env = new HashMap<>();
+        env.put("TEST_VALUE", "THIS IS A TEST");
         //assemble into the default ObjectRepository
-        new ObjectRepositoryAssembler().assemble(null, file);
+        new ObjectRepositoryAssembler().setEnv(env).assemble(null, file);
         //now make sure the values got changed
         assertTrue("Failed to set TEST_CLASS", ValueObject.TEST_CLASS.equals(Param.class));
         assertTrue("Failed to set TEST_STRING", ValueObject.TEST_STRING.equals("foo"));
@@ -58,6 +61,8 @@ public class ObjectRepositoryAssemblerTest {
         assertEquals("Failed to set TEST_BOOLEAN2", ValueObject.TEST_BOOLEAN2, Boolean.TRUE);
         assertTrue("Failed to set TEST_STRING2", ValueObject.TEST_STRING2.equals("foo"));
         assertTrue("Failed to set TEST_STRING3", ValueObject.TEST_STRING3.equals("jujubean"));
+        assertTrue("Failed to set TEST_ENV_SETTING", ValueObject.TEST_ENV_SETTING.equals("THIS IS A TEST"));
+        assertTrue("Failed to set TEST_VALUE_4", ValueObject.TEST_VALUE_4.equals("THIS IS A TEST"));
 
         ObjectRepository or = ObjectRepository.getGlobalRepository();
         assertEquals("Failed to set TEST_KEY1", or.getState("TEST_KEY1").toString(), "my very elderly mother just sent us nine pizzas");

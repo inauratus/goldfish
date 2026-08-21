@@ -18,8 +18,10 @@
         <prop name="TEST_DOUBLE2">99.0</prop>
         <prop name="TEST_FLOAT2">99.0</prop>
         <prop name="TEST_BOOLEAN2">true</prop>
+        <prop name="TEST_ENV_SETTING" ref="$env:TEST_VALUE"/>
         <method name="setTestString2" arg="foo" />
         <method name="setTestString3" arg0="juju" arg1="bean" />
+        <method name="setTestValue4" arg0="$env:TEST_VALUE"/>
     </object>
 
 

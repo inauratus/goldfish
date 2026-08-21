@@ -33,7 +33,9 @@ public class ValueObject {
     public static String TEST_STRING88 = null;
     public static String TEST_STRING99 = null;
     public static StringBuffer TEST_VALUE_1 = null;
+    public static String TEST_VALUE_4 = null;
     public static File HOME = null;
+    public static String TEST_ENV_SETTING = null;
 
     public static void setTestString2(String s1) {
         TEST_STRING2 = s1;
@@ -45,6 +47,10 @@ public class ValueObject {
     
     public static void setTestValue1(StringBuffer buffer) {
         TEST_VALUE_1 = buffer;
+    }
+
+    public static void setTestValue4(String value) {
+        TEST_VALUE_4 = value;
     }
 
 }

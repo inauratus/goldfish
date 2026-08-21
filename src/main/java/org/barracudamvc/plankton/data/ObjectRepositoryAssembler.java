@@ -187,6 +187,7 @@ public class ObjectRepositoryAssembler extends HttpServlet {
     //private vars
     protected boolean logHeartbeat = false;
     public static boolean globalContinueOnErr = false; //csc_041603.2
+    private Map<String, String> env = System.getenv();
 
     //--------------- ObjectRepositoryAssembler ------------------
     /**
@@ -504,36 +505,21 @@ public class ObjectRepositoryAssembler extends HttpServlet {
                             else
                                 targetClass = iprop.getClass();
                         }
-                        //..Integer
                         if (targetClass.equals(Integer.class)) {
                             targetProp = new Integer(propVal);
-
-                            //..Short
                         } else if (targetClass.equals(Short.class)) {
                             targetProp = new Short(propVal);
-
-                            //..Long
                         } else if (targetClass.equals(Long.class)) {
                             targetProp = new Long(propVal);
-
-                            //..Double
                         } else if (targetClass.equals(Double.class)) {
                             targetProp = new Double(propVal);
-
-                            //..Float
                         } else if (targetClass.equals(Float.class)) {
                             targetProp = new Float(propVal);
-
-                            //..Class - //csc_010404_1 - added
                         } else if (targetClass.equals(Class.class)) {
                             targetProp = Classes.getClass(propVal);
-
-                            //..Boolean
                         } else if (targetClass.equals(Boolean.class)) {
                             String tpropVal = propVal.toLowerCase().trim();
                             targetProp = new Boolean(tpropVal.equals("true") || tpropVal.equals("yes") || tpropVal.equals("on") || tpropVal.equals("1"));
-
-                            //..String
                         } else {
                             targetProp = new String(propVal);
                         }
@@ -565,28 +551,6 @@ public class ObjectRepositoryAssembler extends HttpServlet {
                 return;
 
             if (needPropVal) {
-//csc_111204_1_start - 
-// the purpose of this code is to handle the case where the character data actually comes in
-// multiple segments...according to SAX API documentation for ContentHandler.characters method, 
-// "The Parser will call this method to report each chunk of character data. SAX parsers may return all 
-// contiguous character data in a single chunk, or they may split it into several chunks; however, all of 
-// the characters in any single event must come from the same external entity so that the Locator provides 
-// useful information."
-//
-// What this means is that we need to accumulate the character data into a string, rather than just assuming 
-// that we've got the whole value. The problem is, in some cases we are going to be accumulating multiple 
-// props. SO...if propVal is initially null, that tells us that we are ready to start a new prop - so we add
-// a blank item to the prop list - then we accumulate the data by getting the last item in the list and adding
-// onto that. Note that needPropVal must now get cleared when the end tags are hit.
-//
-// Special thanks to Nitin Vira <nvita@encover.com> who located this problem in DefaultApplicationAssembler
-// and provided a patch there (which then allowed us to patch this here)
-/*
-                 propVal = XMLUtil.fromXMLUnicodeString(new String(ch, start, length)).trim();
-                 if (propVal!=null) argList.add(propVal);
-                 logger.debug("got propVal:"+propVal);
-                 needPropVal = false;
-                 */
                 if (propVal == null) {
                     argList.add("");
                 }
@@ -594,7 +558,6 @@ public class ObjectRepositoryAssembler extends HttpServlet {
                 propVal += XMLUtil.fromXMLUnicodeString(new String(ch, start, length)).trim();
                 argList.set(argList.size() - 1, propVal);
                 logger.debug("propVal[" + (argList.size() - 1) + "]:" + propVal);
-//csc_111204_1_end
 
             } else {
 //                logger.debug("[characters] " + new String(ch, start, length));
@@ -645,6 +608,10 @@ public class ObjectRepositoryAssembler extends HttpServlet {
                 return Boolean.TRUE;
             if (id.equals("false"))
                 return Boolean.FALSE;
+            if (id instanceof String && ((String) id).startsWith("$env")) {
+                String lookupKey = ((String) id).substring(5);
+                return env.get(lookupKey);
+            }
             if (objMap.containsKey(id)) {
                 return objMap.get(id);
             } else {
@@ -984,5 +951,10 @@ public class ObjectRepositoryAssembler extends HttpServlet {
                 || continue_on_err.toLowerCase().equals("1")));
         //csc_041603.2_end
         this.assemble(null, this, descriptor);
+    }
+
+    ObjectRepositoryAssembler setEnv(Map<String, String> env) {
+        this.env = env;
+        return this;
     }
 }
