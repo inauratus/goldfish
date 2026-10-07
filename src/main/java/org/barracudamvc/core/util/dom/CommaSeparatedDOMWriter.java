@@ -350,7 +350,7 @@ public class CommaSeparatedDOMWriter implements DOMWriter {
 
     private String escapeFormulaSymbols(String field) {
 
-        String trimmed = trim(field);
+        String trimmed = trim(field) == null ? "" : trim(field);
 
         if (!trimmed.isEmpty()) {
             char first = trimmed.charAt(0);
