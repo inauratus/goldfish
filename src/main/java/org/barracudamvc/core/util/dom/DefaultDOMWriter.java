@@ -19,21 +19,18 @@
  */
 package org.barracudamvc.core.util.dom;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
-
-import javax.servlet.http.HttpServletResponse;
-
 import org.apache.log4j.Logger;
 import org.enhydra.xml.io.DOMFormatter;
 import org.enhydra.xml.io.OutputOptions;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.html.HTMLDocument;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 
 /**
  * This class provides the default implementation for writing a DOM.
@@ -206,8 +203,11 @@ public class DefaultDOMWriter implements DOMWriter {
         if (preventCaching) {
             //add the appropriate headers to the response
             resp.setHeader("Pragma", "no-cache");
-            resp.setHeader("Cache-Control", "no-cache");
-            resp.setDateHeader("Expires", System.currentTimeMillis());
+            resp.setHeader(
+                    "Cache-Control",
+                    "no-cache, no-store, must-revalidate, max-age=0"
+            );
+            resp.setDateHeader("Expires", 0);
 
             //otherwise explicitly give it a max-age (this will generally allow browsers like
             //IE to page back in history without reloading, but if the user actually revisits the

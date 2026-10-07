@@ -39,6 +39,8 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.html.HTMLDocument;
 
+import static org.barracudamvc.plankton.StringUtil.trim;
+
 public class CommaSeparatedDOMWriter implements DOMWriter {
 
     private static final Class CLASS = CommaSeparatedDOMWriter.class;
@@ -103,12 +105,15 @@ public class CommaSeparatedDOMWriter implements DOMWriter {
         if (preventCaching) {
             //add the appropriate headers to the response
             resp.setHeader("Pragma", "no-cache");
-            resp.setHeader("Cache-Control", "no-cache");
-            resp.setDateHeader("Expires", System.currentTimeMillis());
+            resp.setHeader(
+                    "Cache-Control",
+                    "no-cache, no-store, must-revalidate, max-age=0"
+            );
+            resp.setDateHeader("Expires", 0);
 
-            // otherwise explicitly give it a max-age (this will generally  
+            // otherwise explicitly give it a max-age (this will generally
             // allow browsers like IE to page back in history without reloading
-            // , but if the user actually revisits the URL, then it will still 
+            // , but if the user actually revisits the URL, then it will still
             // be reloaded)
         } else {
             resp.setHeader("Cache-Control", "max-age=" + maxAge);
@@ -125,7 +130,7 @@ public class CommaSeparatedDOMWriter implements DOMWriter {
      */
     @Override
     public void write(Node node, HttpServletResponse resp) throws IOException {
-        prepareResponse(node, resp);       
+        prepareResponse(node, resp);
         write(node, new OutputStreamWriter(resp.getOutputStream()));
     }
 
@@ -233,21 +238,26 @@ public class CommaSeparatedDOMWriter implements DOMWriter {
         writeColumn(parent, nodes, writer);
     }
 
-    protected void writeColumn(Node parent, NodeList nodes, Writer writer) throws IOException, DOMException {
-        StringWriter sw = new StringWriter(100);
-        writeAll(nodes, sw);
-        sw.close();
+    protected void writeColumn(
+            Node parent,
+            NodeList nodes,
+            Writer writer
+    ) throws IOException, DOMException {
 
-        String data = sw.toString();
+        StringWriter sw = new StringWriter(100);
+        this.writeAll(nodes, sw);
+        sw.close();
+        String data = escapeFormulaSymbols(sw.toString());
         if (parent.getPreviousSibling() != null) {
             writer.write(",");
         }
-        writer.write('"');                          
-        
-        writer.write(SLASH_PATTERN.matcher(data).replaceAll("\"\""));
-        writer.write('"');                          
-        if (parent.getNextSibling() == null) {           
-            writer.write(lineEnding);
+
+        writer.write('"');
+        writer.write(data.replace("\"", "\"\""));
+
+        writer.write('"');
+        if (parent.getNextSibling() == null) {
+            writer.write(this.getLineEnding());
         }
     }
 
@@ -336,5 +346,24 @@ public class CommaSeparatedDOMWriter implements DOMWriter {
     public CommaSeparatedDOMWriter setLineEnding(String lineEnding) {
         this.lineEnding = lineEnding;
         return this;
+    }
+
+    private String escapeFormulaSymbols(String field) {
+
+        String trimmed = trim(field);
+
+        if (!trimmed.isEmpty()) {
+            char first = trimmed.charAt(0);
+
+            if (first == '=' ||
+                    first == '+' ||
+                    first == '-' ||
+                    first == '@') {
+
+                return "'" + trimmed;
+            }
+        }
+
+        return field;
     }
 }
