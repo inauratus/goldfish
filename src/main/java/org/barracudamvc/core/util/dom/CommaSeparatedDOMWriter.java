@@ -19,27 +19,16 @@
  */
 package org.barracudamvc.core.util.dom;
 
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.StringWriter;
-import java.io.Writer;
-import java.util.regex.Pattern;
-
-import javax.servlet.http.HttpServletResponse;
-
 import org.apache.log4j.Logger;
+import org.barracudamvc.plankton.StringUtil;
+import org.w3c.dom.*;
 import org.w3c.dom.CharacterData;
-import org.w3c.dom.Comment;
-import org.w3c.dom.DOMException;
-import org.w3c.dom.Document;
-import org.w3c.dom.DocumentType;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 import org.w3c.dom.html.HTMLDocument;
 
-import static org.barracudamvc.plankton.StringUtil.trim;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+import java.math.BigDecimal;
+import java.util.regex.Pattern;
 
 public class CommaSeparatedDOMWriter implements DOMWriter {
 
@@ -247,7 +236,11 @@ public class CommaSeparatedDOMWriter implements DOMWriter {
         StringWriter sw = new StringWriter(100);
         this.writeAll(nodes, sw);
         sw.close();
-        String data = escapeFormulaSymbols(sw.toString());
+
+        String data = trim(sw.toString());
+        if (!isValidNegativeNumber(data)) {
+            data = escapeFormulaSymbols(data);
+        }
         if (parent.getPreviousSibling() != null) {
             writer.write(",");
         }
@@ -348,7 +341,62 @@ public class CommaSeparatedDOMWriter implements DOMWriter {
         return this;
     }
 
-    private String escapeFormulaSymbols(String field) {
+    public static boolean isNumeric(String str) {
+        try {
+            new BigDecimal(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    public boolean isValidNegativeNumber(String str) {
+
+        if (str == null || !str.startsWith("-")) {
+            return false;
+        }
+
+        String number = str.substring(1);
+        if (number.isEmpty()) {
+            return false;
+        }
+        String removedSymbols = removePercentSign(removeCurrencySymbol(number));
+
+        if (removedSymbols.length() >= 2 && !Character.isDigit(removedSymbols.charAt(0))) {
+            return false;
+        }
+        return isNumeric(removedSymbols);
+    }
+
+    public String removeComma(String str) {
+        return str.replace(",", "");
+    }
+
+    public String trim(String str) {
+        return StringUtil.trim(str) == null ? "" : StringUtil.trim(str);
+    }
+
+    public String removeCurrencySymbol(String str) {
+        if (!str.isEmpty() && isCurrencySymbol(str.codePointAt(0))) {
+            return str.substring(Character.charCount(str.codePointAt(0)));
+        } else {
+            return str;
+        }
+    }
+
+    public boolean isCurrencySymbol(int character) {
+        return Character.getType(character) == Character.CURRENCY_SYMBOL;
+    }
+
+    public String removePercentSign(String str) {
+        if (str.endsWith("%")) {
+            return str.substring(0, str.length() - 1);
+        } else  {
+            return str;
+        }
+    }
+
+    public String escapeFormulaSymbols(String field) {
 
         String trimmed = trim(field) == null ? "" : trim(field);
 
