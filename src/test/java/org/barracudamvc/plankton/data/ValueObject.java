@@ -1,14 +1,3 @@
-/*
- * Copyright (C) 2013 Payment Alliance International. All Rights Reserved.
- * 
- * This software is the proprietary information of Payment Alliance International.
- * Use is subject to license terms.
- * 
- * Name: ValueObject.java 
- * Created: Oct 7, 2013 8:56:40 AM
- * Author: Chuck Lowery <chuck.lowery @ gopai.com>
- */
-
 package org.barracudamvc.plankton.data;
 
 import java.io.File;

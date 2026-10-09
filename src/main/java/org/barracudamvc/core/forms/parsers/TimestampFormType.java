@@ -1,13 +1,3 @@
-/*
- * Copyright (C) 2013 Payment Alliance International. All Rights Reserved.
- * 
- * This software is the proprietary information of Payment Alliance International.
- * Use is subject to license terms.
- * 
- * Name: TimestampFormType.java 
- * Created: Aug 15, 2013 5:48:44 PM
- * Author: Chuck Lowery <chuck.lowery @ gopai.com>
- */
 package org.barracudamvc.core.forms.parsers;
 
 import org.barracudamvc.core.forms.parsers.formatProviders.DateFormatProvider;
@@ -20,10 +10,6 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.Locale;
 
-/**
- *
- * @author Chuck Lowery <chuck.lowery @ gopai.com>
- */
 public class TimestampFormType extends AbstractDateTimeFormType<Timestamp> {
 
     @Override

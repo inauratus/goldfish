@@ -1,13 +1,3 @@
-/*
- * Copyright (C) 2013 Payment Alliance International. All Rights Reserved.
- * 
- * This software is the proprietary information of Payment Alliance International.
- * Use is subject to license terms.
- * 
- * Name: DateFormTypeTest.java 
- * Created: Aug 19, 2013 8:57:49 AM
- * Author: Chuck Lowery <chuck.lowery @ gopai.com>
- */
 package org.barracudamvc.core.forms.parsers;
 
 import org.barracudamvc.core.forms.FormType;
@@ -21,10 +11,6 @@ import java.util.Locale;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- *
- * @author Chuck Lowery <chuck.lowery @ gopai.com>
- */
 public class DateFormTypeTest extends AbstractParser {
 
     @Test

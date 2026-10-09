@@ -1,13 +1,3 @@
-/*
- * Copyright (C) 2013 Payment Alliance International. All Rights Reserved.
- * 
- * This software is the proprietary information of Payment Alliance International.
- * Use is subject to license terms.
- * 
- * Name: BooleanFormType.java 
- * Created: Aug 15, 2013 8:44:52 AM
- * Author: Chuck Lowery <chuck.lowery @ gopai.com>
- */
 package org.barracudamvc.core.forms.parsers;
 
 import java.util.Locale;
@@ -15,10 +5,6 @@ import org.barracudamvc.core.forms.FormType;
 import org.barracudamvc.core.forms.ParseException;
 import org.barracudamvc.plankton.StringUtil;
 
-/**
- *
- * @author Chuck Lowery <chuck.lowery @ gopai.com>
- */
 public class BooleanFormType extends FormType<Boolean> {
 
     @Override

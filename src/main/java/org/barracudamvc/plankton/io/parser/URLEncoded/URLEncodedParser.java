@@ -18,11 +18,6 @@ import static org.barracudamvc.plankton.io.parser.URLEncoded.State.VALUE;
 import static org.barracudamvc.plankton.io.parser.URLEncoded.TakeKey.TAKE_KEY;
 import static org.barracudamvc.plankton.io.parser.URLEncoded.TakePairActor.TAKE_PAIR;
 
-/**
- * Thread safe URL encoded key=value parser.
- *
- * @author Charles H. Lowery <chuck.lowery @ gmail.com>
- */
 public class URLEncodedParser {
 
     private static final Transition[][] transitions;

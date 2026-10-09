@@ -1,23 +1,8 @@
-/*
- * Copyright (C) 2014 Payment Alliance International. All Rights Reserved.
- * 
- * This software is the proprietary information of Payment Alliance International.
- * Use is subject to license terms.
- * 
- * Name: DefaultFormElementParser.java 
- * Created: Jul 2, 2014 11:45:07 AM
- * Author: Chuck Lowery <chuck.lowery @ gopai.com>
- */
-
 package org.barracudamvc.core.forms.parsers;
 
 import java.util.Locale;
 import org.barracudamvc.core.forms.ParseException;
 
-/**
- *
- * @author Chuck Lowery <chuck.lowery @ gopai.com>
- */
 public abstract class DefaultFormElementParser<T> implements StringElementParser<T> {
 
     /**

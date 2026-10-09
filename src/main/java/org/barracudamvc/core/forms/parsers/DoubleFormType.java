@@ -1,13 +1,3 @@
-/*
- * Copyright (C) 2013 Payment Alliance International. All Rights Reserved.
- * 
- * This software is the proprietary information of Payment Alliance International.
- * Use is subject to license terms.
- * 
- * Name: DoubleFormType.java 
- * Created: Aug 15, 2013 2:38:50 PM
- * Author: Chuck Lowery <chuck.lowery @ gopai.com>
- */
 package org.barracudamvc.core.forms.parsers;
 
 import java.util.Locale;

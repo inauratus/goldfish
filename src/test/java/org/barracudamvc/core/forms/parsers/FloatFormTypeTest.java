@@ -1,23 +1,9 @@
-/*
- * Copyright (C) 2013 Payment Alliance International. All Rights Reserved.
- * 
- * This software is the proprietary information of Payment Alliance International.
- * Use is subject to license terms.
- * 
- * Name: FloatFormTypeTest.java 
- * Created: Aug 17, 2013 12:38:35 PM
- * Author: Chuck Lowery <chuck.lowery @ gopai.com>
- */
 package org.barracudamvc.core.forms.parsers;
 
 import org.barracudamvc.core.forms.FormType;
 import org.barracudamvc.core.forms.ParseException;
 import org.junit.Test;
 
-/**
- *
- * @author Chuck Lowery <chuck.lowery @ gopai.com>
- */
 public class FloatFormTypeTest extends AbstractParser {
 
     @Test

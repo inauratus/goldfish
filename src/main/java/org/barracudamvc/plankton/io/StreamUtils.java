@@ -1,9 +1,3 @@
-/*
- * Copyright (C) 2014 Payment Alliance International. All Rights Reserved.
- * 
- * This software is the proprietary information of Payment Alliance International.
- * Use is subject to license terms.
- */
 package org.barracudamvc.plankton.io;
 
 import java.io.ByteArrayOutputStream;
@@ -11,9 +5,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-/**
- * @author will.lowery
- */
 public class StreamUtils {
 
     public static void copy(InputStream in, OutputStream out) throws IOException {

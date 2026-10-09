@@ -1,9 +1,4 @@
-/*
- * Copyright (C) 2015 Payment Alliance International. All Rights Reserved.
- * 
- * This software is the proprietary information of Payment Alliance International.
- * Use is subject to license terms.
- */
+
 package org.barracudamvc.plankton.io.parser.json.parser;
 
 import java.io.ByteArrayInputStream;
@@ -20,10 +15,6 @@ import org.junit.Assert;
 import static org.junit.Assert.assertThat;
 import org.junit.Test;
 
-/**
- *
- * @author Chuck Lowery <chuck.lowery @ gopai.com>
- */
 public class ParserTest {
 
     public ParserTest() {

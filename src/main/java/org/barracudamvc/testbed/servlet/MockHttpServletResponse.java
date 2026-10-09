@@ -1,13 +1,3 @@
-/*
- * Copyright (C) 2013 Payment Alliance International. All Rights Reserved.
- * 
- * This software is the proprietary information of Payment Alliance International.
- * Use is subject to license terms.
- * 
- * Name: MockHttpServletResponse.java 
- * Created: Nov 1, 2013 8:32:31 AM
- * Author: Chuck Lowery <chuck.lowery @ gopai.com>
- */
 package org.barracudamvc.testbed.servlet;
 
 import java.io.ByteArrayOutputStream;
@@ -21,10 +11,6 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Chuck Lowery <chuck.lowery @ gopai.com>
- */
 public class MockHttpServletResponse implements HttpServletResponse {
 
     private Locale locale = Locale.getDefault();

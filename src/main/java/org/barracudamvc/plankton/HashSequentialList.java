@@ -1,13 +1,3 @@
-/*
- * Copyright (C) 2013 Payment Alliance International. All Rights Reserved.
- * 
- * This software is the proprietary information of Payment Alliance International.
- * Use is subject to license terms.
- * 
- * Name: HashLinkedList.java 
- * Created: Feb 4, 2013 5:02:03 PM
- * Author: Chuck Lowery <chuck.lowery @ gopai.com>
- */
 package org.barracudamvc.plankton;
 
 import java.util.AbstractSequentialList;
@@ -18,12 +8,6 @@ import java.util.ListIterator;
 import java.util.Map;
 import java.util.RandomAccess;
 
-/**
- * This List is backed by both an Array and a Hash Map. This 
- * 
- * 
- * @author Chuck Lowery <chuck.lowery @ gopai.com>
- */
 public class HashSequentialList<T> extends AbstractSequentialList<T> implements RandomAccess {
 
     private List<T> backingList = new ArrayList<T>();

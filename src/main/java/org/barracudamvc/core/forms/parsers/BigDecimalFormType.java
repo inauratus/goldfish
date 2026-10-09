@@ -1,13 +1,3 @@
-/*
- * Copyright (C) 2013 Payment Alliance International. All Rights Reserved.
- * 
- * This software is the proprietary information of Payment Alliance International.
- * Use is subject to license terms.
- * 
- * Name: BigDecimalFormType.java 
- * Created: Aug 15, 2013 3:03:29 PM
- * Author: Chuck Lowery <chuck.lowery @ gopai.com>
- */
 package org.barracudamvc.core.forms.parsers;
 
 import java.math.BigDecimal;
@@ -16,10 +6,6 @@ import org.barracudamvc.core.forms.FormType;
 import org.barracudamvc.core.forms.ParseException;
 import org.barracudamvc.plankton.StringUtil;
 
-/**
- *
- * @author Chuck Lowery <chuck.lowery @ gopai.com>
- */
 public class BigDecimalFormType extends FormType<BigDecimal> implements NumberComparator {
 
     @Override

@@ -1,13 +1,3 @@
-/*
- * Copyright (C) 2013 Payment Alliance International. All Rights Reserved.
- * 
- * This software is the proprietary information of Payment Alliance International.
- * Use is subject to license terms.
- * 
- * Name: AbstractGatewayHelper.java 
- * Created: Nov 5, 2013 11:19:53 AM
- * Author: Chuck Lowery <chuck.lowery @ gopai.com>
- */
 package org.barracudamvc.core.event;
 
 import java.io.IOException;
@@ -22,10 +12,6 @@ import org.barracudamvc.testbed.servlet.MockHttpServletResponse;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-/**
- *
- * @author Chuck Lowery <chuck.lowery @ gopai.com>
- */
 public abstract class AbstractGatewayHelper {
 
     public static final String BASE_URL = "http://www.example.com/Path";

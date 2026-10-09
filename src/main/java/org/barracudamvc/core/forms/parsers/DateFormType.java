@@ -1,13 +1,3 @@
-/*
- * Copyright (C) 2013 Payment Alliance International. All Rights Reserved.
- *
- * This software is the proprietary information of Payment Alliance International.
- * Use is subject to license terms.
- *
- * Name: DateFormType.java
- * Created: Aug 15, 2013 4:08:18 PM
- * Author: Chuck Lowery <chuck.lowery @ gopai.com>
- */
 package org.barracudamvc.core.forms.parsers;
 
 import org.barracudamvc.core.forms.parsers.formatProviders.*;
@@ -16,9 +6,6 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-/**
- * @author Chuck Lowery <chuck.lowery @ gopai.com>
- */
 public class DateFormType extends AbstractDateTimeFormType<Date> {
 
     public static DateFormatProvider[] providers = new DateFormatProvider[]{

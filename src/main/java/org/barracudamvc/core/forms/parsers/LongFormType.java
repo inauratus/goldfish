@@ -1,9 +1,3 @@
-/*
- * Copyright (C) 2013 Payment Alliance International. All Rights Reserved.
- * 
- * This software is the proprietary information of Payment Alliance International.
- * Use is subject to license terms.
- */
 package org.barracudamvc.core.forms.parsers;
 
 public class LongFormType extends WholeNumberFormType<Long> implements NumberComparator {

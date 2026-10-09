@@ -1,22 +1,8 @@
-/*
- * Copyright (C) 2013 Payment Alliance International. All Rights Reserved.
- * 
- * This software is the proprietary information of Payment Alliance International.
- * Use is subject to license terms.
- * 
- * Name: StateMapContainer.java 
- * Created: Feb 18, 2013 11:26:49 AM
- * Author: Chuck Lowery <chuck.lowery @ gopai.com>
- */
 package org.barracudamvc.plankton.data;
 
 import java.util.Map;
 import java.util.Set;
 
-/**
- *
- * @author Chuck Lowery <chuck.lowery @ gopai.com>
- */
 public class StateMapContainer implements StateMap {
 
     StateMap stateMap;

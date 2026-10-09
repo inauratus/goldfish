@@ -1,21 +1,7 @@
-/*
- * Copyright (C) 2013 Payment Alliance International. All Rights Reserved.
- * 
- * This software is the proprietary information of Payment Alliance International.
- * Use is subject to license terms.
- * 
- * Name: LongFormType.java 
- * Created: Aug 15, 2013 10:08:19 AM
- * Author: Chuck Lowery <chuck.lowery @ gopai.com>
- */
 package org.barracudamvc.core.forms.parsers;
 
 import org.barracudamvc.core.forms.ParseException;
 
-/**
- *
- * @author Chuck Lowery <chuck.lowery @ gopai.com>
- */
 public class ShortFormType extends WholeNumberFormType<Short> implements NumberComparator {
 
     @Override

@@ -1,22 +1,8 @@
-/*
- * Copyright (C) 2013 Payment Alliance International. All Rights Reserved.
- * 
- * This software is the proprietary information of Payment Alliance International.
- * Use is subject to license terms.
- * 
- * Name: AbstractWholeNumberTest.java 
- * Created: Aug 15, 2013 10:25:46 AM
- * Author: Chuck Lowery <chuck.lowery @ gopai.com>
- */
 package org.barracudamvc.core.forms.parsers;
 
 import org.barracudamvc.core.forms.ParseException;
 import org.junit.Test;
 
-/**
- *
- * @author Chuck Lowery <chuck.lowery @ gopai.com>
- */
 public abstract class AbstractWholeNumber extends AbstractParser {
 
     @Test

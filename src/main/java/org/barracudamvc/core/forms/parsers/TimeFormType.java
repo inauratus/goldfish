@@ -1,13 +1,3 @@
-/*
- * Copyright (C) 2013 Payment Alliance International. All Rights Reserved.
- * 
- * This software is the proprietary information of Payment Alliance International.
- * Use is subject to license terms.
- * 
- * Name: TimeFormType.java 
- * Created: Aug 16, 2013 4:55:50 PM
- * Author: Chuck Lowery <chuck.lowery @ gopai.com>
- */
 package org.barracudamvc.core.forms.parsers;
 
 import java.sql.Time;
@@ -18,10 +8,6 @@ import org.barracudamvc.core.forms.parsers.formatProviders.DateFormatProvider;
 import org.barracudamvc.core.forms.parsers.formatProviders.DateTimeParser;
 import org.barracudamvc.core.forms.parsers.formatProviders.TimeInstanceProvider;
 
-/**
- *
- * @author Chuck Lowery <chuck.lowery @ gopai.com>
- */
 public class TimeFormType extends AbstractDateTimeFormType<Time> {
 
     @Override

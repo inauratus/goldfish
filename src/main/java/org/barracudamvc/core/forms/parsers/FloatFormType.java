@@ -1,13 +1,3 @@
-/*
- * Copyright (C) 2013 Payment Alliance International. All Rights Reserved.
- * 
- * This software is the proprietary information of Payment Alliance International.
- * Use is subject to license terms.
- * 
- * Name: FloatFormType.java 
- * Created: Aug 15, 2013 2:44:37 PM
- * Author: Chuck Lowery <chuck.lowery @ gopai.com>
- */
 package org.barracudamvc.core.forms.parsers;
 
 import java.util.Locale;
@@ -15,10 +5,6 @@ import org.barracudamvc.core.forms.FormType;
 import org.barracudamvc.core.forms.ParseException;
 import org.barracudamvc.plankton.StringUtil;
 
-/**
- *
- * @author Chuck Lowery <chuck.lowery @ gopai.com>
- */
 public class FloatFormType extends FormType<Float> implements NumberComparator {
 
     @Override

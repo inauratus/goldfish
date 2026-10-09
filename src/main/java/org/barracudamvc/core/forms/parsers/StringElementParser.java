@@ -1,13 +1,3 @@
-/*
- * Copyright (C) 2014 Payment Alliance International. All Rights Reserved.
- * 
- * This software is the proprietary information of Payment Alliance International.
- * Use is subject to license terms.
- * 
- * Name: CommonElementValueParser.java 
- * Created: Jul 2, 2014 11:12:19 AM
- * Author: Chuck Lowery <chuck.lowery @ gopai.com>
- */
 package org.barracudamvc.core.forms.parsers;
 
 import java.util.Locale;
@@ -21,5 +11,5 @@ public interface StringElementParser<T> extends FormElementParser<T> {
      * parse(Object val, Locale locale) if you want this method to ever be called
      * @see StringFormType for an example
      */
-    public T parse(String origVal, Locale loc) throws ParseException;
+    T parse(String origVal, Locale loc) throws ParseException;
 }

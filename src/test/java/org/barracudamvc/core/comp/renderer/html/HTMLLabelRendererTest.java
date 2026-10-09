@@ -1,9 +1,3 @@
-/*
- * Copyright (C) 2015 Payment Alliance International. All Rights Reserved.
- * 
- * This software is the proprietary information of Payment Alliance International.
- * Use is subject to license terms.
- */
 package org.barracudamvc.core.comp.renderer.html;
 
 import org.barracudamvc.core.comp.BComponent;
@@ -28,10 +22,6 @@ import org.w3c.dom.html.HTMLLabelElement;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-/**
- *
- * @author Chuck Lowery <chuck.lowery @ gopai.com>
- */
 public class HTMLLabelRendererTest {
 
     DefaultViewContext viewContext;
